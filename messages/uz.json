@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "catalog": "Katalog",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "cart": "Savat"
+  },
+  "home": {
+    "hero": {
+      "badge": "O'zbekistonda №1 Zoje diler",
+      "title": "Zoje tikuv mashinalari",
+      "subtitle": "Professional sanoat tikuv mashinalari va uy tikuv mashinalari. 10 yillik tajriba va ishonchli xizmat.",
+      "cta": "Katalogni ko'rish",
+      "ctaSecondary": "Biz bilan bog'laning"
+    },
+    "featured": {
+      "title": "Tanlangan mahsulotlar",
+      "subtitle": "Eng ko'p sotilgan va mashhur modellar"
+    },
+    "categories": {
+      "title": "Kategoriyalar bo'yicha",
+      "subtitle": "Barcha tikuv ehtiyojlari uchun keng assortiment"
+    },
+    "whyUs": {
+      "title": "Nima uchun Zoje.uz?",
+      "subtitle": "O'zbekistondagi eng ishonchli Zoje diler",
+      "warranty": {
+        "title": "1 yil kafolat",
+        "desc": "Barcha mashinalar 12 oy kafolat bilan ta'minlanadi"
+      },
+      "delivery": {
+        "title": "Tez yetkazib berish",
+        "desc": "Toshkent bo'yicha 1 kun, viloyatlarga 3 kun ichida"
+      },
+      "support": {
+        "title": "Texnik xizmat",
+        "desc": "Doimiy texnik yordam va ta'mirlash xizmati"
+      },
+      "original": {
+        "title": "Original mahsulot",
+        "desc": "Faqat Zoje zavodi sertifikatlangan mahsulotlar"
+      }
+    },
+    "cta": {
+      "title": "Buyurtma berishga tayyormisiz?",
+      "subtitle": "Menejerimiz siz bilan bog'lanadi va barcha savollaringizga javob beradi",
+      "button": "Hozir buyurtma bering"
+    }
+  },
+  "catalog": {
+    "title": "Katalog",
+    "subtitle": "Barcha Zoje tikuv mashinalari",
+    "filters": "Filtrlar",
+    "sort": "Saralash",
+    "sortOptions": {
+      "newest": "Yangi",
+      "priceAsc": "Arzon",
+      "priceDesc": "Qimmat"
+    },
+    "categories": {
+      "all": "Barchasi",
+      "industrial": "Sanoat",
+      "overlock": "Overlock",
+      "buttonhole": "Tugma teshigi",
+      "bartack": "Bartack",
+      "pattern": "Naqsh",
+      "embroidery": "Kashtado'zlik",
+      "heavy-duty": "Og'ir gazlama",
+      "domestic": "Uy tikuv",
+      "specialty": "Maxsus"
+    },
+    "filters_label": {
+      "inStock": "Faqat mavjud",
+      "priceRange": "Narx oralig'"
+    },
+    "noResults": "Mahsulot topilmadi",
+    "showAll": "Barchasini ko'rish",
+    "resultsCount": "{count} ta mahsulot"
+  },
+  "product": {
+    "addToCart": "Savatga qo'shish",
+    "addedToCart": "Savatga qo'shildi",
+    "inStock": "Mavjud",
+    "outOfStock": "Mavjud emas",
+    "specs": "Texnik xususiyatlar",
+    "description": "Tavsif",
+    "related": "O'xshash mahsulotlar",
+    "quantity": "Miqdor",
+    "model": "Model",
+    "category": "Kategoriya",
+    "galleryImage": "Rasm",
+    "video": "Video"
+  },
+  "cart": {
+    "title": "Savat",
+    "empty": "Savat bo'sh",
+    "emptyDesc": "Savatga mahsulot qo'shing",
+    "continueShopping": "Xaridni davom ettiring",
+    "subtotal": "Jami",
+    "checkout": "Rasmiylashtirish",
+    "remove": "O'chirish",
+    "qty": "Dona"
+  },
+  "checkout": {
+    "title": "Buyurtma berish",
+    "summary": "Buyurtma tarkibi",
+    "form": {
+      "fullName": "To'liq ism",
+      "phone": "Telefon raqam",
+      "city": "Shahar",
+      "address": "Yetkazib berish manzili",
+      "comment": "Izoh (ixtiyoriy)",
+      "submit": "Buyurtma berish",
+      "submitting": "Yuborilmoqda...",
+      "addressPlaceholder": "Ko'cha, uy raqami, kvartira",
+      "namePlaceholder": "Islom Karimov"
+    },
+    "cities": {
+      "toshkent": "Toshkent",
+      "samarqand": "Samarqand",
+      "buxoro": "Buxoro",
+      "namangan": "Namangan",
+      "andijon": "Andijon",
+      "fargona": "Farg'ona",
+      "qarshi": "Qarshi",
+      "nukus": "Nukus",
+      "other": "Boshqa"
+    },
+    "validation": {
+      "nameRequired": "Ism majburiy",
+      "nameMin": "Ism kamida 2 ta harf",
+      "phoneRequired": "Telefon raqam majburiy",
+      "phoneInvalid": "To'g'ri telefon kiriting (+998 XX XXX XX XX)",
+      "cityRequired": "Shaharni tanlang",
+      "addressRequired": "Manzil majburiy"
+    }
+  },
+  "success": {
+    "title": "Buyurtmangiz qabul qilindi!",
+    "subtitle": "Menejerimiz tez orada siz bilan bog'lanadi",
+    "orderId": "Buyurtma raqami",
+    "backHome": "Bosh sahifaga"
+  },
+  "about": {
+    "title": "Biz haqimizda",
+    "subtitle": "O'zbekistondagi yetakchi Zoje tikuv mashinlari dileri",
+    "story": "Bizning hikoyamiz",
+    "mission": "Bizning maqsadimiz",
+    "stats": {
+      "founded": "Tashkil etilgan yil",
+      "clients": "Mamnun mijozlar",
+      "regions": "Viloyatlarda xizmat",
+      "experience": "Yillik tajriba"
+    },
+    "storyText1": "Zoje.uz — O'zbekistondagi Zoje tikuv mashinalarining rasmiy va yagona vakolatli dileri. 2014-yildan beri biz 5000 dan ortiq mijozlarga yuqori sifatli sanoat va uy tikuv mashinalari yetkazib berdik. Bizning maqsadimiz O'zbekistondagi tikuv sanoatini zamonaviy, samarali va ishonchli uskunalar bilan ta'minlashdir.",
+    "storyText2": "Zoje International Co., Ltd. — Xitoyning yetakchi tikuv mashinlari ishlab chiqaruvchisi bo'lib, 30 yildan ortiq tajribaga ega. Kompaniya mahsulotlari 100 dan ortiq mamlakatga eksport qilinadi va sanoat standartlariga to'liq javob beradi.",
+    "missionText": "Bizning missiyamiz — O'zbekistondagi kichik va o'rta tikuv korxonalarini, shuningdek yirik fabrikalarni eng zamonaviy Zoje uskunalari bilan ta'minlash. Biz nafaqat mashina sotamiz — biz texnik xizmat, o'qitish va doimiy qo'llab-quvvatlash orqali mijozlarimizga muvaffaqiyatga erishishda yordam beramiz."
+  },
+  "contact": {
+    "title": "Aloqa",
+    "subtitle": "Biz bilan bog'laning",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Manzil",
+    "hours": "Ish vaqti",
+    "hoursValue": "Dushanba–Shanba: 9:00–18:00",
+    "form": {
+      "name": "Ismingiz",
+      "phone": "Telefon",
+      "message": "Xabar",
+      "submit": "Yuborish",
+      "successMessage": "Xabaringiz yuborildi! Tez orada bog'lanamiz."
+    }
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi",
+    "tryAgain": "Qayta urinib ko'ring",
+    "backToCatalog": "Katalogga qaytish",
+    "price": "Narx",
+    "uzs": "so'm",
+    "seeAll": "Barchasini ko'rish",
+    "close": "Yopish"
+  },
+  "footer": {
+    "tagline": "O'zbekistonda Zoje tikuv mashinalarining rasmiy dileri",
+    "pages": "Sahifalar",
+    "categories": "Kategoriyalar",
+    "contact": "Aloqa",
+    "address": "Toshkent, Yunusobod tumani, Amir Temur ko'chasi 15",
+    "copyright": "Barcha huquqlar himoyalangan.",
+    "dealer": "Zoje International Co., Ltd. rasmiy dileri"
+  }
+}

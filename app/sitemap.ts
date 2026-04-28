@@ -5,10 +5,24 @@ const BASE = 'https://zoje.uz';
 const LOCALES = ['uz', 'ru'];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [categories, products] = await Promise.all([
-    getAllCategories(),
-    getProducts(),
-  ]);
+  let categories: Awaited<ReturnType<typeof getAllCategories>> = [];
+  let products: Awaited<ReturnType<typeof getProducts>> = [];
+
+  try {
+    [categories, products] = await Promise.all([
+      getAllCategories(),
+      getProducts(),
+    ]);
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('Dynamic server usage')) {
+      throw error;
+    }
+
+    console.warn(
+      '[zoje sitemap] backend data unavailable',
+      error instanceof Error ? error.message : error
+    );
+  }
 
   const staticPages = ['', '/catalog', '/about', '/contact'].flatMap((path) =>
     LOCALES.map((locale) => ({

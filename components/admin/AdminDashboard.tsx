@@ -10,7 +10,27 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 
-const API_URL = process.env.NEXT_PUBLIC_ZOJE_API_URL ?? 'http://localhost:4000';
+const DEFAULT_API_URL = '/backend-api';
+const CONFIGURED_API_URL =
+  process.env.NEXT_PUBLIC_ZOJE_API_URL ?? DEFAULT_API_URL;
+
+function apiUrl() {
+  if (
+    typeof window !== 'undefined' &&
+    window.location.protocol === 'https:' &&
+    CONFIGURED_API_URL.startsWith('http://')
+  ) {
+    return DEFAULT_API_URL;
+  }
+
+  return CONFIGURED_API_URL.endsWith('/')
+    ? CONFIGURED_API_URL.slice(0, -1)
+    : CONFIGURED_API_URL;
+}
+
+function apiPath(path: string) {
+  return `${apiUrl()}${path}`;
+}
 
 const categories: ProductCategory[] = [
   'industrial',
@@ -201,7 +221,7 @@ function formToProduct(
 }
 
 async function request<T>(path: string, options: RequestInit = {}, token?: string) {
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(apiPath(path), {
     ...options,
     headers: {
       'Content-Type': 'application/json',
@@ -223,7 +243,7 @@ async function uploadProductImages(files: FileList, token: string) {
   const formData = new FormData();
   Array.from(files).forEach((file) => formData.append('images', file));
 
-  const response = await fetch(`${API_URL}/api/admin/uploads/images`, {
+  const response = await fetch(apiPath('/api/admin/uploads/images'), {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,

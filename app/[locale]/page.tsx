@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { connection } from 'next/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { WhyUsSection } from '@/components/home/WhyUsSection';
 import { CtaSection } from '@/components/home/CtaSection';
@@ -12,6 +13,7 @@ import { ArrowRight } from 'lucide-react';
 export default async function HomePage() {
   const t = await getTranslations('home');
   const tCommon = await getTranslations('common');
+  await connection();
   const featured = await getFeaturedProducts();
 
   return (

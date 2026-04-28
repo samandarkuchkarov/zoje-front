@@ -1,6 +1,36 @@
 import type { Product, ProductCategory } from '@/types/product';
 
-const API_URL = process.env.ZOJE_API_URL ?? 'http://localhost:4000';
+const API_URL = process.env.ZOJE_API_URL ?? 'http://87.106.190.187:11286';
+const PUBLIC_ASSET_URL =
+  process.env.NEXT_PUBLIC_ZOJE_ASSET_URL ?? '/backend-assets';
+
+function publicAssetBase() {
+  return PUBLIC_ASSET_URL.endsWith('/')
+    ? PUBLIC_ASSET_URL
+    : `${PUBLIC_ASSET_URL}/`;
+}
+
+function apiAssetBase() {
+  return new URL('/assets/', API_URL).toString();
+}
+
+function rewriteAssetUrls(value: unknown): unknown {
+  if (typeof value === 'string') {
+    const backendAssets = apiAssetBase();
+    if (!value.startsWith(backendAssets)) return value;
+    return `${publicAssetBase()}${value.slice(backendAssets.length)}`;
+  }
+
+  if (Array.isArray(value)) return value.map(rewriteAssetUrls);
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, rewriteAssetUrls(item)])
+    );
+  }
+
+  return value;
+}
 
 type ProductListParams = {
   category?: ProductCategory;
@@ -33,7 +63,7 @@ async function apiFetch<T>(path: string, params?: Record<string, string | boolea
 
   const data = (await response.json()) as T;
   console.log('[zoje frontend] result', data);
-  return data;
+  return rewriteAssetUrls(data) as T;
 }
 
 export async function getProducts(params?: ProductListParams): Promise<Product[]> {
@@ -57,7 +87,7 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
 
   const data = (await response.json()) as Product;
   console.log('[zoje frontend] result', data);
-  return data;
+  return rewriteAssetUrls(data) as Product;
 }
 
 export async function getProductsByCategory(category: ProductCategory): Promise<Product[]> {

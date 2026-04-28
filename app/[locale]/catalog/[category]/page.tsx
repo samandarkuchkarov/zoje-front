@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { getProductsByCategory, getAllCategories } from '@/lib/products';
 import { ProductCard } from '@/components/catalog/ProductCard';
@@ -10,11 +11,6 @@ type Props = {
   params: Promise<{ category: string; locale: string }>;
 };
 
-export async function generateStaticParams() {
-  const categories = await getAllCategories();
-  return categories.map((c) => ({ category: c }));
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, locale } = await params;
   const t = await getTranslations({ locale, namespace: 'catalog.categories' });
@@ -24,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CategoryPage({ params }: Props) {
   const { category, locale } = await params;
   const t = await getTranslations({ locale, namespace: 'catalog' });
+  await connection();
 
   const cats = await getAllCategories();
   if (!cats.includes(category as ProductCategory)) notFound();

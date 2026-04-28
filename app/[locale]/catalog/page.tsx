@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
+import { connection } from 'next/server';
 import type { Metadata } from 'next';
 import { CatalogView } from '@/components/catalog/CatalogView';
 import { CatalogFilters } from '@/components/catalog/CatalogFilters';
@@ -19,6 +20,7 @@ export async function generateMetadata({
 
 export default async function CatalogPage() {
   const t = await getTranslations('catalog');
+  await connection();
   const products = await getProducts();
 
   return (

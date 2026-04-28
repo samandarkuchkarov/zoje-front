@@ -144,7 +144,7 @@ export default async function ProductPage({ params }: Props) {
               availability: product.inStock
                 ? 'https://schema.org/InStock'
                 : 'https://schema.org/OutOfStock',
-              seller: { '@type': 'Organization', name: 'Zoje.uz' },
+              seller: { '@type': 'Organization', name: 'Zoje' },
             },
           }),
         }}

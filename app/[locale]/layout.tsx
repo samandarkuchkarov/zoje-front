@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'home.hero' });
   return {
     title: {
-      default: 'Zoje.uz — Tikuv Mashinalari',
-      template: '%s | Zoje.uz',
+      default: 'Zoje — Tikuv Mashinalari',
+      template: '%s | Zoje',
     },
     description: t('subtitle'),
     openGraph: {
-      siteName: 'Zoje.uz',
+      siteName: 'Zoje',
       locale: locale === 'ru' ? 'ru_RU' : 'uz_UZ',
     },
   };

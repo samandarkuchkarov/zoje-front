@@ -56,7 +56,7 @@ type ProductForm = {
   descriptionRu: string;
   images: string[];
   videoUrls: string;
-  specs: string;
+  specs: Record<string, string>;
 };
 
 type AdminProductPayload = Omit<Product, 'id'> & { id?: string };
@@ -64,6 +64,16 @@ type AdminProductPayload = Omit<Product, 'id'> & { id?: string };
 type ImageUploadResponse = {
   images: string[];
 };
+
+class ApiError extends Error {
+  status: number;
+
+  constructor(status: number, message: string) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+  }
+}
 
 const emptyForm: ProductForm = {
   model: '',
@@ -80,8 +90,31 @@ const emptyForm: ProductForm = {
   descriptionRu: '',
   images: [],
   videoUrls: '',
-  specs: '{}',
+  specs: {},
 };
+
+const specFields = [
+  { key: 'maxSpeed', label: 'Maksimal tezlik' },
+  { key: 'stitchLength', label: 'Tikish uzunligi' },
+  { key: 'needleSystem', label: 'Igna tizimi' },
+  { key: 'presserFoot', label: 'Bosuvchi oyoq' },
+  { key: 'voltage', label: 'Kuchlanish' },
+  { key: 'motor', label: 'Motor' },
+  { key: 'stitchType', label: 'Tikish turi' },
+  { key: 'needleCount', label: 'Igna soni' },
+  { key: 'maxThickness', label: 'Maksimal qalinlik' },
+  { key: 'differential', label: 'Differensial' },
+  { key: 'lubrication', label: 'Moylash' },
+  { key: 'workingArea', label: 'Ish maydoni' },
+  { key: 'patternStorage', label: 'Naqsh xotirasi' },
+  { key: 'headRotation', label: 'Bosh aylanishi' },
+  { key: 'positioning', label: 'Pozitsiyalash' },
+  { key: 'cuttingArea', label: 'Kesish maydoni' },
+  { key: 'heads', label: 'Boshlar soni' },
+  { key: 'fileFormats', label: 'Fayl formatlari' },
+  { key: 'application', label: "Qo'llanish sohasi" },
+  { key: 'weight', label: 'Vazn' },
+];
 
 function lines(value: string) {
   return value
@@ -118,8 +151,20 @@ function productToForm(product: Product): ProductForm {
     descriptionRu: product.description.ru,
     images: product.images,
     videoUrls: (product.videoUrls ?? []).join('\n'),
-    specs: JSON.stringify(product.specs ?? {}, null, 2),
+    specs: Object.fromEntries(
+      Object.entries(product.specs ?? {}).flatMap(
+        ([key, value]) => (typeof value === 'string' ? [[key, value]] : [])
+      )
+    ) as Record<string, string>,
   };
+}
+
+function formSpecsToProductSpecs(specs: Record<string, string>) {
+  return Object.fromEntries(
+    Object.entries(specs)
+      .map(([key, value]) => [key, value.trim()])
+      .filter(([, value]) => value)
+  ) as Product['specs'];
 }
 
 function formToProduct(
@@ -151,7 +196,7 @@ function formToProduct(
     },
     images: form.images,
     videoUrls: lines(form.videoUrls),
-    specs: JSON.parse(form.specs || '{}') as Product['specs'],
+    specs: formSpecsToProductSpecs(form.specs),
   };
 }
 
@@ -166,7 +211,10 @@ async function request<T>(path: string, options: RequestInit = {}, token?: strin
   });
   const data = (await response.json()) as T;
   if (!response.ok) {
-    throw new Error((data as { error?: string }).error ?? "So'rov bajarilmadi");
+    throw new ApiError(
+      response.status,
+      (data as { error?: string }).error ?? "So'rov bajarilmadi"
+    );
   }
   return data;
 }
@@ -184,7 +232,10 @@ async function uploadProductImages(files: FileList, token: string) {
   });
   const data = (await response.json()) as ImageUploadResponse | { error?: string };
   if (!response.ok) {
-    throw new Error(('error' in data && data.error) || 'Rasm yuklashda xatolik');
+    throw new ApiError(
+      response.status,
+      ('error' in data && data.error) || 'Rasm yuklashda xatolik'
+    );
   }
   return (data as ImageUploadResponse).images;
 }
@@ -212,6 +263,17 @@ export function AdminDashboard() {
     setForm(productToForm(product));
   }, []);
 
+  const logout = useCallback((nextMessage = 'Sessiya tugadi. Qayta kiring.') => {
+    localStorage.removeItem('zoje-admin');
+    selectedSlugRef.current = null;
+    setSession(null);
+    setProducts([]);
+    setSelectedSlug(null);
+    setForm(emptyForm);
+    setPassword('');
+    setMessage(nextMessage);
+  }, []);
+
   const loadProducts = useCallback(
     async (token: string) => {
       setLoading(true);
@@ -220,12 +282,16 @@ export function AdminDashboard() {
         setProducts(nextProducts);
         if (!selectedSlugRef.current && nextProducts[0]) selectProduct(nextProducts[0]);
       } catch (error) {
+        if (error instanceof ApiError && error.status === 401) {
+          logout();
+          return;
+        }
         setMessage(error instanceof Error ? error.message : 'Mahsulotlar yuklanmadi');
       } finally {
         setLoading(false);
       }
     },
-    [selectProduct]
+    [logout, selectProduct]
   );
 
   useEffect(() => {
@@ -255,7 +321,13 @@ export function AdminDashboard() {
       setSession(nextSession);
       await loadProducts(nextSession.token);
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Kirishda xatolik');
+      setMessage(
+        error instanceof ApiError && error.status === 401
+          ? "Email yoki parol noto'g'ri"
+          : error instanceof Error
+            ? error.message
+            : 'Kirishda xatolik'
+      );
     }
   }
 
@@ -282,6 +354,10 @@ export function AdminDashboard() {
       selectProduct(saved);
       await loadProducts(session.token);
     } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        logout();
+        return;
+      }
       setMessage(error instanceof Error ? error.message : 'Saqlashda xatolik');
     }
   }
@@ -297,14 +373,22 @@ export function AdminDashboard() {
       sortOrder: i + 1,
     }));
     setProducts(next.map((product, i) => ({ ...product, sortOrder: i + 1 })));
-    await request<Product[]>(
-      '/api/admin/product-order',
-      {
-        method: 'PUT',
-        body: JSON.stringify({ items }),
-      },
-      session.token
-    );
+    try {
+      await request<Product[]>(
+        '/api/admin/product-order',
+        {
+          method: 'PUT',
+          body: JSON.stringify({ items }),
+        },
+        session.token
+      );
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        logout();
+        return;
+      }
+      setMessage(error instanceof Error ? error.message : "Tartibni o'zgartirishda xatolik");
+    }
   }
 
   function newProduct() {
@@ -325,6 +409,10 @@ export function AdminDashboard() {
       }));
       setMessage(`${images.length} ta rasm yuklandi`);
     } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        logout();
+        return;
+      }
       setMessage(error instanceof Error ? error.message : 'Rasm yuklashda xatolik');
     } finally {
       setUploadingImages(false);
@@ -335,6 +423,16 @@ export function AdminDashboard() {
     setForm((current) => ({
       ...current,
       images: current.images.filter((item) => item !== image),
+    }));
+  }
+
+  function updateSpec(key: string, value: string) {
+    setForm((current) => ({
+      ...current,
+      specs: {
+        ...current.specs,
+        [key]: value,
+      },
     }));
   }
 
@@ -381,10 +479,7 @@ export function AdminDashboard() {
             <Button variant="outline" onClick={newProduct}>Mahsulot qo&apos;shish</Button>
             <Button
               variant="outline"
-              onClick={() => {
-                localStorage.removeItem('zoje-admin');
-                setSession(null);
-              }}
+              onClick={() => logout('')}
             >
               Chiqish
             </Button>
@@ -544,9 +639,20 @@ export function AdminDashboard() {
               </div>
               <Field label="Videolar, har qatorda bitta URL"><Textarea rows={6} value={form.videoUrls} onChange={(e) => setForm({ ...form, videoUrls: e.target.value })} /></Field>
               <div className="md:col-span-2">
-                <Field label="Xususiyatlar JSON">
-                  <Textarea rows={8} value={form.specs} onChange={(e) => setForm({ ...form, specs: e.target.value })} />
-                </Field>
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="mb-4 text-sm font-semibold">Texnik xususiyatlar</h3>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {specFields.map((field) => (
+                      <Field key={field.key} label={field.label}>
+                        <Textarea
+                          rows={2}
+                          value={form.specs[field.key] ?? ''}
+                          onChange={(event) => updateSpec(field.key, event.target.value)}
+                        />
+                      </Field>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="mt-5 flex justify-end">

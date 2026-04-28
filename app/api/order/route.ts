@@ -107,7 +107,7 @@ ${data.comment ? `<b>Комментарий:</b> ${data.comment}` : ''}
   const { error } = await resend.emails.send({
     from: 'orders@zoje.uz',
     to,
-    subject: `Новый заказ ${orderId} — Zoje.uz`,
+    subject: `Новый заказ ${orderId} — Zoje`,
     html,
   });
   if (error) throw new Error(error.message);

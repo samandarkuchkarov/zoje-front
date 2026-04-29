@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <span className="font-heading font-extrabold text-2xl">
-              ZOJE<span className="font-medium text-white/60">.uz</span>
+              ZOJE
             </span>
             <p className="mt-3 text-sm text-white/70 text-pretty">
               {t('footer.tagline')}

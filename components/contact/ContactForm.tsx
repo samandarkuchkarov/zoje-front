@@ -23,6 +23,7 @@ type FormData = z.infer<typeof schema>;
 export function ContactForm() {
   const t = useTranslations('contact.form');
   const tCheckout = useTranslations('checkout.form');
+  const tCommon = useTranslations('common');
 
   const {
     register,
@@ -31,10 +32,20 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = async (_data: FormData) => {
-    await new Promise((r) => setTimeout(r, 800));
-    toast.success(t('successMessage'));
-    reset();
+  const onSubmit = async (data: FormData) => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = (await res.json()) as { ok: boolean; error?: string };
+      if (!json.ok) throw new Error(json.error ?? 'Unknown error');
+      toast.success(t('successMessage'));
+      reset();
+    } catch {
+      toast.error(tCommon('error'), { description: tCommon('tryAgain') });
+    }
   };
 
   return (

@@ -130,7 +130,7 @@
       "nameRequired": "Ism majburiy",
       "nameMin": "Ism kamida 2 ta harf",
       "phoneRequired": "Telefon raqam majburiy",
-      "phoneInvalid": "To'g'ri telefon kiriting (+998 XX XXX XX XX)",
+      "phoneInvalid": "To'g'ri telefon kiriting (+998990975511)",
       "cityRequired": "Shaharni tanlang",
       "addressRequired": "Manzil majburiy"
     }
@@ -187,7 +187,7 @@
     "pages": "Sahifalar",
     "categories": "Kategoriyalar",
     "contact": "Aloqa",
-    "address": "Toshkent, Yunusobod tumani, Amir Temur ko'chasi 15",
+    "address": "Tashkent, Yakkasaroy tumani, Usmon Nosir (Shota Rustaveli)ko’chasi 140-uy.\nMo’ljal: Asia Tashkent mehmonxonasi",
     "copyright": "Barcha huquqlar himoyalangan.",
     "dealer": "Zoje International Co., Ltd. rasmiy dileri"
   }

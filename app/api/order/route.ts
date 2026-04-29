@@ -84,7 +84,7 @@ ${data.comment ? `<b>Комментарий:</b> ${data.comment}` : ''}
   const { Resend } = await import('resend');
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
-    from: 'orders@zoje.uz',
+    from: 'zoje.tashkent20@gmail.com',
     to,
     subject: `Новый заказ ${orderId} — Zoje`,
     html,

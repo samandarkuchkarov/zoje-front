@@ -130,7 +130,7 @@
       "nameRequired": "Имя обязательно",
       "nameMin": "Имя минимум 2 буквы",
       "phoneRequired": "Номер телефона обязателен",
-      "phoneInvalid": "Введите корректный номер (+998 XX XXX XX XX)",
+      "phoneInvalid": "Введите корректный номер (+998990975511)",
       "cityRequired": "Выберите город",
       "addressRequired": "Адрес обязателен"
     }
@@ -187,7 +187,7 @@
     "pages": "Страницы",
     "categories": "Категории",
     "contact": "Контакты",
-    "address": "Ташкент, Юнусабадский р-н, ул. Амира Темура 15",
+    "address": "Tashkent, Yakkasaroy tumani, Usmon Nosir (Shota Rustaveli)ko’chasi 140-uy.\nMo’ljal: Asia Tashkent mehmonxonasi",
     "copyright": "Все права защищены.",
     "dealer": "Официальный дилер Zoje International Co., Ltd."
   }

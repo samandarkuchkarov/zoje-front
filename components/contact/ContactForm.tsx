@@ -56,7 +56,7 @@ export function ContactForm() {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="cphone">{t('phone')}</Label>
-        <Input id="cphone" {...register('phone')} placeholder="+998" className={errors.phone ? 'border-destructive' : ''} />
+        <Input id="cphone" {...register('phone')} placeholder="+998990975511" className={errors.phone ? 'border-destructive' : ''} />
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="message">{t('message')}</Label>

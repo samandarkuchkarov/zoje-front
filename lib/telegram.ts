@@ -23,5 +23,8 @@ export async function sendTelegramMessage(
     }
   );
 
-  if (!res.ok) throw new Error(`Telegram error: ${res.status}`);
+  if (!res.ok) {
+    const details = await res.text();
+    throw new Error(`Telegram error: ${res.status} ${details}`);
+  }
 }

@@ -29,8 +29,8 @@ export default async function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         <div className="space-y-6">
           {[
-            { icon: Phone, label: t('phone'), value: '+998 71 234-56-78', href: 'tel:+998712345678' },
-            { icon: Mail, label: t('email'), value: 'info@zoje.uz', href: 'mailto:info@zoje.uz' },
+            { icon: Phone, label: t('phone'), value: '+998990975511', href: 'tel:+998990975511' },
+            { icon: Mail, label: t('email'), value: 'zoje.tashkent20@gmail.com', href: 'mailto:zoje.tashkent20@gmail.com' },
             { icon: MapPin, label: t('address'), value: tFooter('address'), href: undefined },
             { icon: Clock, label: t('hours'), value: t('hoursValue'), href: undefined },
           ].map(({ icon: Icon, label, value, href }) => (
@@ -47,7 +47,7 @@ export default async function ContactPage() {
                     {value}
                   </a>
                 ) : (
-                  <p className="font-semibold">{value}</p>
+                  <p className="font-semibold whitespace-pre-line">{value}</p>
                 )}
               </div>
             </div>

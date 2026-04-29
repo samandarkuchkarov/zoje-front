@@ -68,19 +68,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />
-                <a href="tel:+998712345678" className="hover:text-white transition-colors">
-                  +998 71 234-56-78
+                <a href="tel:+998990975511" className="hover:text-white transition-colors">
+                  +998990975511
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />
-                <a href="mailto:info@zoje.uz" className="hover:text-white transition-colors">
-                  info@zoje.uz
+                <a href="mailto:zoje.tashkent20@gmail.com" className="hover:text-white transition-colors">
+                  zoje.tashkent20@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />
-                <span>{t('footer.address')}</span>
+                <span className="whitespace-pre-line">{t('footer.address')}</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <Clock className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />

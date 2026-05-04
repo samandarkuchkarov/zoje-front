@@ -36,6 +36,7 @@ export type Product = {
   sortOrder?: number;
   inStock: boolean;
   featured?: boolean;
+  hidden?: boolean;
   placeholder?: boolean;
   officialUrl?: string;
   videoUrls?: string[];

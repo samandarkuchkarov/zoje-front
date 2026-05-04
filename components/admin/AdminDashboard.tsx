@@ -68,6 +68,7 @@ type ProductForm = {
   oldPrice: string;
   inStock: boolean;
   featured: boolean;
+  hidden: boolean;
   nameUz: string;
   nameRu: string;
   shortUz: string;
@@ -102,6 +103,7 @@ const emptyForm: ProductForm = {
   oldPrice: '',
   inStock: true,
   featured: false,
+  hidden: false,
   nameUz: '',
   nameRu: '',
   shortUz: '',
@@ -163,6 +165,7 @@ function productToForm(product: Product): ProductForm {
     oldPrice: product.oldPrice ? String(product.oldPrice) : '',
     inStock: product.inStock,
     featured: Boolean(product.featured),
+    hidden: Boolean(product.hidden),
     nameUz: product.name.uz,
     nameRu: product.name.ru,
     shortUz: product.shortDescription.uz,
@@ -208,6 +211,7 @@ function formToProduct(
     sortOrder,
     inStock: form.inStock,
     featured: form.featured,
+    hidden: form.hidden,
     name: { uz: form.nameUz.trim(), ru: form.nameRu.trim() },
     shortDescription: { uz: form.shortUz.trim(), ru: form.shortRu.trim() },
     description: {
@@ -547,6 +551,11 @@ export function AdminDashboard() {
                       <p className="truncate text-xs text-muted-foreground">
                         {categoryLabels[product.category]}
                       </p>
+                      {product.hidden && (
+                        <Badge variant="outline" className="mt-1">
+                          Yashirilgan
+                        </Badge>
+                      )}
                     </div>
                   </button>
                   <div className="flex shrink-0 gap-1">
@@ -604,6 +613,10 @@ export function AdminDashboard() {
                 <label className="flex items-center gap-2 text-sm">
                   <Checkbox checked={form.featured} onCheckedChange={(checked) => setForm({ ...form, featured: checked === true })} />
                   Tavsiya etilgan
+                </label>
+                <label className="flex items-center gap-2 text-sm">
+                  <Checkbox checked={form.hidden} onCheckedChange={(checked) => setForm({ ...form, hidden: checked === true })} />
+                  Saytda yashirish
                 </label>
               </div>
               <Field label="Nomi (UZ)"><Input required value={form.nameUz} onChange={(e) => setForm({ ...form, nameUz: e.target.value })} /></Field>

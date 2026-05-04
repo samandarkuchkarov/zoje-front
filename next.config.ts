@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const backendUrl = (
+  process.env.ZOJE_API_URL ?? 'http://87.106.190.187:11286'
+).replace(/\/$/, '');
 
 const nextConfig: NextConfig = {
   images: {
@@ -26,6 +29,20 @@ const nextConfig: NextConfig = {
         pathname: '/assets/**',
       },
     ],
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/backend-api/:path*',
+          destination: `${backendUrl}/:path*`,
+        },
+        {
+          source: '/backend-assets/:path*',
+          destination: `${backendUrl}/assets/:path*`,
+        },
+      ],
+    };
   },
 };
 

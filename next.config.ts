@@ -5,30 +5,47 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const backendUrl = (
   process.env.ZOJE_API_URL ?? 'http://87.106.190.187:11286'
 ).replace(/\/$/, '');
+const publicSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+function assetRemotePatterns() {
+  const patterns: NonNullable<NonNullable<NextConfig['images']>['remotePatterns']> = [
+    {
+      protocol: 'http' as const,
+      hostname: 'localhost',
+      port: '4000',
+      pathname: '/assets/**',
+    },
+    {
+      protocol: 'http' as const,
+      hostname: '127.0.0.1',
+      port: '4000',
+      pathname: '/assets/**',
+    },
+    {
+      protocol: 'http' as const,
+      hostname: '87.106.190.187',
+      port: '11286',
+      pathname: '/assets/**',
+    },
+  ];
+
+  if (publicSiteUrl?.startsWith('http')) {
+    const url = new URL(publicSiteUrl);
+    patterns.push({
+      protocol: url.protocol.replace(':', '') as 'http' | 'https',
+      hostname: url.hostname,
+      port: url.port,
+      pathname: '/assets/**',
+    });
+  }
+
+  return patterns;
+}
 
 const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowLocalIP: true,
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '4000',
-        pathname: '/assets/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '4000',
-        pathname: '/assets/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '87.106.190.187',
-        port: '11286',
-        pathname: '/assets/**',
-      },
-    ],
+    remotePatterns: assetRemotePatterns(),
   },
   async rewrites() {
     return {

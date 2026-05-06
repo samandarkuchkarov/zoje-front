@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { getAllCategories, getProducts } from '@/lib/products';
 
+export const revalidate = 3600;
+
 const BASE = 'https://zoje.uz';
 const LOCALES = ['uz', 'ru'];
 
@@ -42,14 +44,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  const productPages = products.flatMap((p) =>
-    LOCALES.map((locale) => ({
-      url: `${BASE}/${locale}/product/${p.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-  );
+  const productPages = products
+    .filter((p) => !p.hidden && !p.placeholder)
+    .flatMap((p) =>
+      LOCALES.map((locale) => ({
+        url: `${BASE}/${locale}/product/${p.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      }))
+    );
 
   return [...staticPages, ...categoryPages, ...productPages];
 }

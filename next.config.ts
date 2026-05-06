@@ -44,6 +44,7 @@ function assetRemotePatterns() {
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
     dangerouslyAllowLocalIP: true,
     remotePatterns: assetRemotePatterns(),
   },

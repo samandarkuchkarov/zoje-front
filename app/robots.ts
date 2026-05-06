@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/uz/admin', '/ru/admin', '/admin'],
     },
-    sitemap: 'https://zoje.uz/sitemap.xml',
+    sitemap: 'https://zojeshop.uz/sitemap.xml',
   };
 }

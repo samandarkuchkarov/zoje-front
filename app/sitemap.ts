@@ -3,7 +3,7 @@ import { getAllCategories, getProducts } from '@/lib/products';
 
 export const revalidate = 3600;
 
-const BASE = 'https://zoje.uz';
+const BASE = 'https://zojeshop.uz';
 const LOCALES = ['uz', 'ru'];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

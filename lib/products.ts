@@ -49,20 +49,16 @@ function buildApiUrl(path: string, params?: Record<string, string | boolean | un
 
 async function apiFetch<T>(path: string, params?: Record<string, string | boolean | undefined>): Promise<T> {
   const url = buildApiUrl(path, params);
-  console.log(`[zoje frontend] fetch ${url}`);
 
   const response = await fetch(url, {
     cache: 'no-store',
   });
-
-  console.log(`[zoje frontend] response ${response.status} ${url}`);
 
   if (!response.ok) {
     throw new Error(`Backend request failed: ${response.status} ${response.statusText}`);
   }
 
   const data = (await response.json()) as T;
-  console.log('[zoje frontend] result', data);
   return rewriteAssetUrls(data) as T;
 }
 
@@ -72,13 +68,10 @@ export async function getProducts(params?: ProductListParams): Promise<Product[]
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
   const url = buildApiUrl(`/api/products/${slug}`);
-  console.log(`[zoje frontend] fetch ${url}`);
 
   const response = await fetch(url, {
     cache: 'no-store',
   });
-
-  console.log(`[zoje frontend] response ${response.status} ${url}`);
 
   if (response.status === 404) return undefined;
   if (!response.ok) {
@@ -86,7 +79,6 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
   }
 
   const data = (await response.json()) as Product;
-  console.log('[zoje frontend] result', data);
   return rewriteAssetUrls(data) as Product;
 }
 

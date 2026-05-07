@@ -69,7 +69,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <a
-                  href="https://t.me/s/ZOJEUZBEKISTAN"
+                  href="https://t.me/zoje_uzb"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Telegram"
@@ -81,7 +81,7 @@ export function Footer() {
                   Telegram
                 </a>
                 <a
-                  href="https://www.instagram.com/zoje_official/"
+                  href="https://www.instagram.com/zoje_tashkent?igsh=MmJkOWdzc2toYmJo"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -98,6 +98,15 @@ export function Footer() {
                 <a href="tel:+998990975511" className="hover:text-white transition-colors tracking-wide">
                   +998 99 097 55 11
                 </a>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-white/70">
+                <Phone className="w-4 h-4 shrink-0 text-white/40" />
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white/40 text-xs">Servis center</span>
+                  <a href="tel:+998997205511" className="hover:text-white transition-colors tracking-wide">
+                    +998 99 720 55 11
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />

@@ -29,7 +29,8 @@ export default async function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         <div className="space-y-6">
           {[
-            { icon: Phone, label: t('phone'), value: '+998990975511', href: 'tel:+998990975511' },
+            { icon: Phone, label: t('phone'), value: '+998 99 097 55 11', href: 'tel:+998990975511' },
+            { icon: Phone, label: t('servicePhone'), value: '+998 99 720 55 11', href: 'tel:+998997205511' },
             { icon: Mail, label: t('email'), value: 'zoje.tashkent20@gmail.com', href: 'mailto:zoje.tashkent20@gmail.com' },
             { icon: MapPin, label: t('address'), value: tFooter('address'), href: undefined },
             { icon: Clock, label: t('hours'), value: t('hoursValue'), href: undefined },

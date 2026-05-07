@@ -9,7 +9,7 @@ const ContactSchema = z.object({
 });
 
 function formatContactMessage(data: z.infer<typeof ContactSchema>) {
-  return `📩 Новая заявка с сайта Zoje
+  return `📩 Новая заявка с сайта ZOJE
 
 👤 Имя: ${data.name}
 📞 Телефон: ${data.phone}

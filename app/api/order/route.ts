@@ -86,7 +86,7 @@ ${data.comment ? `<b>Комментарий:</b> ${data.comment}` : ''}
   const { error } = await resend.emails.send({
     from: 'zoje.tashkent20@gmail.com',
     to,
-    subject: `Новый заказ ${orderId} — Zoje`,
+    subject: `Новый заказ ${orderId} — ZOJE`,
     html,
   });
   if (error) throw new Error(error.message);

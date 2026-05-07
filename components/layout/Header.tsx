@@ -10,7 +10,7 @@ import { useCartStore } from '@/store/cart';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { backendAsset } from '@/lib/assets';
+
 
 const subscribeToHydration = () => () => {};
 const getClientHydrationSnapshot = () => true;
@@ -65,14 +65,13 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="shrink-0" aria-label="Zoje home">
+            <Link href="/" className="shrink-0" aria-label="ZOJE home">
               <Image
-                src={backendAsset('/zoje-logo.svg')}
-                alt="Zoje"
-                width={104}
+                src="/logo.PNG"
+                alt="ZOJE"
+                width={92}
                 height={36}
                 priority
-                unoptimized
                 className="block h-9 w-auto"
               />
             </Link>

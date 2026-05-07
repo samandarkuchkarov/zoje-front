@@ -7,9 +7,9 @@
   },
   "home": {
     "hero": {
-      "badge": "O'zbekistonda №1 Zoje diler",
-      "title": "Zoje tikuv mashinalari",
-      "subtitle": "Professional sanoat tikuv mashinalari va uy tikuv mashinalari. 10 yillik tajriba va ishonchli xizmat.",
+      "badge": "O'zbekistonda №1 ZOJE distribyutori",
+      "title": "ZOJE tikuv mashinalari",
+      "subtitle": "Professional sanoat tikuv mashinalari va uy tikuv mashinalari. 10 yillik tajriba va ishonchli xizmat. Har bir mashinaga 5 yil kafolat.",
       "cta": "Katalogni ko'rish",
       "ctaSecondary": "Biz bilan bog'laning"
     },
@@ -22,11 +22,11 @@
       "subtitle": "Barcha tikuv ehtiyojlari uchun keng assortiment"
     },
     "whyUs": {
-      "title": "Nima uchun Zoje.uz?",
-      "subtitle": "O'zbekistondagi eng ishonchli Zoje diler",
+      "title": "Nima uchun ZOJE?",
+      "subtitle": "O'zbekistondagi eng ishonchli ZOJE distribyutori",
       "warranty": {
-        "title": "1 yil kafolat",
-        "desc": "Barcha mashinalar 12 oy kafolat bilan ta'minlanadi"
+        "title": "5 yil kafolat",
+        "desc": "Barcha mashinalar 5 yil kafolat bilan ta'minlanadi"
       },
       "delivery": {
         "title": "Tez yetkazib berish",
@@ -38,7 +38,7 @@
       },
       "original": {
         "title": "Original mahsulot",
-        "desc": "Faqat Zoje zavodi sertifikatlangan mahsulotlar"
+        "desc": "Faqat ZOJE zavodi sertifikatlangan mahsulotlar"
       }
     },
     "cta": {
@@ -49,7 +49,7 @@
   },
   "catalog": {
     "title": "Katalog",
-    "subtitle": "Barcha Zoje tikuv mashinalari",
+    "subtitle": "Barcha ZOJE tikuv mashinalari",
     "filters": "Filtrlar",
     "sort": "Saralash",
     "sortOptions": {
@@ -143,7 +143,7 @@
   },
   "about": {
     "title": "Biz haqimizda",
-    "subtitle": "O'zbekistondagi yetakchi Zoje tikuv mashinlari dileri",
+    "subtitle": "O'zbekistondagi yetakchi ZOJE tikuv mashinlari distribyutori",
     "story": "Bizning hikoyamiz",
     "mission": "Bizning maqsadimiz",
     "stats": {
@@ -152,9 +152,9 @@
       "regions": "Viloyatlarda xizmat",
       "experience": "Yillik tajriba"
     },
-    "storyText1": "Zoje — O'zbekistondagi Zoje tikuv mashinalarining rasmiy va yagona vakolatli dileri. 2014-yildan beri biz 5000 dan ortiq mijozlarga yuqori sifatli sanoat va uy tikuv mashinalari yetkazib berdik. Bizning maqsadimiz O'zbekistondagi tikuv sanoatini zamonaviy, samarali va ishonchli uskunalar bilan ta'minlashdir.",
-    "storyText2": "Zoje International Co., Ltd. — Xitoyning yetakchi tikuv mashinlari ishlab chiqaruvchisi bo'lib, 30 yildan ortiq tajribaga ega. Kompaniya mahsulotlari 100 dan ortiq mamlakatga eksport qilinadi va sanoat standartlariga to'liq javob beradi.",
-    "missionText": "Bizning missiyamiz — O'zbekistondagi kichik va o'rta tikuv korxonalarini, shuningdek yirik fabrikalarni eng zamonaviy Zoje uskunalari bilan ta'minlash. Biz nafaqat mashina sotamiz — biz texnik xizmat, o'qitish va doimiy qo'llab-quvvatlash orqali mijozlarimizga muvaffaqiyatga erishishda yordam beramiz."
+    "storyText1": "ZOJE — O'zbekistondagi ZOJE tikuv mashinalarining rasmiy va yagona vakolatli distribyutori. 2014-yildan beri biz 5000 dan ortiq mijozlarga yuqori sifatli sanoat va uy tikuv mashinalari yetkazib berdik. Bizning maqsadimiz O'zbekistondagi tikuv sanoatini zamonaviy, samarali va ishonchli uskunalar bilan ta'minlashdir.",
+    "storyText2": "ZOJE International Co., Ltd. — Xitoyning yetakchi tikuv mashinlari ishlab chiqaruvchisi bo'lib, 30 yildan ortiq tajribaga ega. Kompaniya mahsulotlari 100 dan ortiq mamlakatga eksport qilinadi va sanoat standartlariga to'liq javob beradi.",
+    "missionText": "Bizning missiyamiz — O'zbekistondagi kichik va o'rta tikuv korxonalarini, shuningdek yirik fabrikalarni eng zamonaviy ZOJE uskunalari bilan ta'minlash. Biz nafaqat mashina sotamiz — biz texnik xizmat, o'qitish va doimiy qo'llab-quvvatlash orqali mijozlarimizga muvaffaqiyatga erishishda yordam beramiz."
   },
   "contact": {
     "title": "Aloqa",
@@ -183,12 +183,12 @@
     "close": "Yopish"
   },
   "footer": {
-    "tagline": "O'zbekistonda Zoje tikuv mashinalarining rasmiy dileri",
+    "tagline": "O'zbekistonda ZOJE tikuv mashinalarining rasmiy distribyutori",
     "pages": "Sahifalar",
     "categories": "Kategoriyalar",
     "contact": "Aloqa",
-    "address": "Tashkent, Yakkasaroy tumani, Usmon Nosir (Shota Rustaveli)ko’chasi 140-uy.\nMo’ljal: Asia Tashkent mehmonxonasi",
+    "address": "Tashkent, Yakkasaroy tumani, Usmon Nosir (Shota Rustaveli)ko’chasi 140-uy.",
     "copyright": "Barcha huquqlar himoyalangan.",
-    "dealer": "Zoje International Co., Ltd. rasmiy dileri"
+    "dealer": "ZOJE International Co., Ltd. rasmiy distribyutori"
   }
 }

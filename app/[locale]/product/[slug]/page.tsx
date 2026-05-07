@@ -133,7 +133,7 @@ export default async function ProductPage({ params }: Props) {
             name: product.name[lang],
             description: product.shortDescription[lang],
             sku: product.model,
-            brand: { '@type': 'Brand', name: 'Zoje' },
+            brand: { '@type': 'Brand', name: 'ZOJE' },
             offers: {
               '@type': 'Offer',
               price: product.price,
@@ -141,7 +141,7 @@ export default async function ProductPage({ params }: Props) {
               availability: product.inStock
                 ? 'https://schema.org/InStock'
                 : 'https://schema.org/OutOfStock',
-              seller: { '@type': 'Organization', name: 'Zoje' },
+              seller: { '@type': 'Organization', name: 'ZOJE' },
             },
           }),
         }}

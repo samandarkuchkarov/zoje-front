@@ -15,9 +15,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Zoje — Tikuv Mashinalari',
-  description: "Zoje sanoat va uy tikuv mashinalari. O'zbekistonda rasmiy diler.",
-  metadataBase: new URL('https://zoje.uz'),
+  title: 'ZOJE — Tikuv Mashinalari',
+  description: "ZOJE sanoat va uy tikuv mashinalari. O'zbekistonda rasmiy diler.",
+  metadataBase: new URL('https://zojeshop.uz'),
 };
 
 export default function RootLayout({

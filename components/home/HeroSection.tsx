@@ -3,11 +3,10 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { backendAsset } from '@/lib/assets';
 
 export function HeroSection() {
   const t = useTranslations('home.hero');
@@ -85,6 +84,19 @@ export function HeroSection() {
                 </Button>
               </Link>
             </motion.div>
+
+            <motion.div
+              initial={shouldReduce ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-brand/20 bg-brand-light px-5 py-3"
+            >
+              <ShieldCheck className="w-8 h-8 text-brand shrink-0" />
+              <div>
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">{t('warrantyLabel')}</p>
+                <p className="text-xl font-extrabold text-brand leading-tight">{t('warrantyValue')}</p>
+              </div>
+            </motion.div>
           </div>
 
           <div className="hidden lg:flex justify-center">
@@ -96,10 +108,10 @@ export function HeroSection() {
             >
               <div className="w-[420px] h-[420px] rounded-3xl bg-brand-light border border-brand/10 flex items-center justify-center shadow-2xl shadow-brand/10 relative overflow-hidden">
                 <Image
-                  src={backendAsset('/hero/zoje-sewing-machine-hero.png')}
-                  alt="Zoje industrial sewing machine"
+                  src="/hero/zoje-zj-m7-hero.png"
+                  alt="ZOJE ZJ-M7 automatic industrial sewing machine"
                   fill
-                  priority
+                  preload
                   sizes="420px"
                   className="object-cover"
                 />

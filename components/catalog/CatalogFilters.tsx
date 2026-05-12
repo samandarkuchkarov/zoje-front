@@ -12,12 +12,10 @@ const CATEGORIES: { key: ProductCategory | 'all'; label: string }[] = [
   { key: 'all', label: 'all' },
   { key: 'industrial', label: 'industrial' },
   { key: 'overlock', label: 'overlock' },
-  { key: 'buttonhole', label: 'buttonhole' },
-  { key: 'bartack', label: 'bartack' },
   { key: 'pattern', label: 'pattern' },
-  { key: 'embroidery', label: 'embroidery' },
-  { key: 'heavy-duty', label: 'heavy-duty' },
-  { key: 'domestic', label: 'domestic' },
+  { key: 'specialty', label: 'specialty' },
+  { key: 'spare-parts', label: 'spare-parts' },
+  { key: 'accessories', label: 'accessories' },
 ];
 
 export function CatalogFilters() {

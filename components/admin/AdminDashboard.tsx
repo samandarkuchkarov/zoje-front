@@ -35,25 +35,24 @@ function apiPath(path: string) {
 const categories: ProductCategory[] = [
   'industrial',
   'overlock',
-  'buttonhole',
-  'bartack',
   'pattern',
-  'embroidery',
-  'heavy-duty',
-  'domestic',
   'specialty',
+  'spare-parts',
+  'accessories',
 ];
 
 const categoryLabels: Record<ProductCategory, string> = {
-  industrial: 'Sanoat mashinalari',
+  industrial: "To'g'ri chok",
   overlock: 'Overlok',
-  buttonhole: 'Petlya',
-  bartack: 'Bartak',
-  pattern: 'Dasturli tikuv',
-  embroidery: 'Kashta',
-  'heavy-duty': "Og'ir matolar",
-  domestic: 'Maishiy',
-  specialty: 'Maxsus',
+  buttonhole: 'Mahsus mashinalar',
+  bartack: 'Mahsus mashinalar',
+  pattern: 'Rashma',
+  embroidery: 'Mahsus mashinalar',
+  'heavy-duty': 'Mahsus mashinalar',
+  domestic: 'Mahsus mashinalar',
+  specialty: 'Mahsus mashinalar',
+  'spare-parts': 'Ehtiyot qisimlar',
+  accessories: 'Aksessuarlar',
 };
 
 type AdminSession = {

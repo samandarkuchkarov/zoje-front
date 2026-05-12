@@ -47,9 +47,10 @@ export function Footer() {
                 [
                   ['industrial', '/catalog/industrial'],
                   ['overlock', '/catalog/overlock'],
-                  ['heavy-duty', '/catalog/heavy-duty'],
-                  ['domestic', '/catalog/domestic'],
-                  ['embroidery', '/catalog/embroidery'],
+                  ['pattern', '/catalog/pattern'],
+                  ['specialty', '/catalog/specialty'],
+                  ['spare-parts', '/catalog/spare-parts'],
+                  ['accessories', '/catalog/accessories'],
                 ] as const
               ).map(([key, href]) => (
                 <li key={key}>

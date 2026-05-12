@@ -61,15 +61,17 @@
     },
     "categories": {
       "all": "Все",
-      "industrial": "Промышленные",
+      "industrial": "Прямой стежок",
       "overlock": "Оверлок",
-      "buttonhole": "Петельные",
-      "bartack": "Закрепочные",
-      "pattern": "Программные",
-      "embroidery": "Вышивальные",
-      "heavy-duty": "Тяжёлые ткани",
-      "domestic": "Бытовые",
-      "specialty": "Специальные"
+      "buttonhole": "Специальные машины",
+      "bartack": "Специальные машины",
+      "pattern": "Рашма",
+      "embroidery": "Специальные машины",
+      "heavy-duty": "Специальные машины",
+      "domestic": "Специальные машины",
+      "specialty": "Специальные машины",
+      "spare-parts": "Запчасти",
+      "accessories": "Аксессуары"
     },
     "filters_label": {
       "inStock": "Только в наличии",

@@ -12,10 +12,19 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { SpecsTable } from '@/components/product/SpecsTable';
+import type { ProductCategory } from '@/types/product';
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;
 };
+
+function publicCategory(category: ProductCategory): ProductCategory {
+  if (['buttonhole', 'bartack', 'embroidery', 'heavy-duty', 'domestic'].includes(category)) {
+    return 'specialty';
+  }
+
+  return category;
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params;
@@ -43,13 +52,14 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const related = await getRelatedProducts(product, 4);
+  const category = publicCategory(product.category);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs
         crumbs={[
           { label: tCat('title'), href: '/catalog' },
-          { label: tCat(`categories.${product.category}`), href: `/catalog/${product.category}` },
+          { label: tCat(`categories.${category}`), href: `/catalog/${category}` },
           { label: product.model },
         ]}
         className="mb-6"
@@ -65,7 +75,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="space-y-5">
           <div>
             <Badge variant="secondary" className="mb-3 text-xs">
-              {tCat(`categories.${product.category}`)}
+              {tCat(`categories.${category}`)}
             </Badge>
             <h1 className="font-heading font-extrabold text-2xl md:text-3xl text-balance">
               {product.name[lang]}

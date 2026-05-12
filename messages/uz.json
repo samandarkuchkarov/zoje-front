@@ -1,6 +1,6 @@
 {
   "nav": {
-    "catalog": "Katalog",
+    "catalog": "Mahsulotlar",
     "about": "Biz haqimizda",
     "contact": "Aloqa",
     "cart": "Savat"
@@ -10,7 +10,7 @@
       "badge": "O'zbekistonda №1 ZOJE distribyutori",
       "title": "ZOJE tikuv mashinalari",
       "subtitle": "Professional sanoat tikuv mashinalari va uy tikuv mashinalari. 10 yillik tajriba va ishonchli xizmat. Har bir mashinaga 5 yil kafolat.",
-      "cta": "Katalogni ko'rish",
+      "cta": "Mahsulotlarni ko'rish",
       "ctaSecondary": "Biz bilan bog'laning",
       "warrantyLabel": "Kafolat",
       "warrantyValue": "5 yil"
@@ -50,7 +50,7 @@
     }
   },
   "catalog": {
-    "title": "Katalog",
+    "title": "Mahsulotlar",
     "subtitle": "Barcha ZOJE tikuv mashinalari",
     "filters": "Filtrlar",
     "sort": "Saralash",
@@ -61,15 +61,17 @@
     },
     "categories": {
       "all": "Barchasi",
-      "industrial": "Sanoat",
-      "overlock": "Overlock",
-      "buttonhole": "Tugma teshigi",
-      "bartack": "Bartack",
-      "pattern": "Naqsh",
-      "embroidery": "Kashtado'zlik",
-      "heavy-duty": "Og'ir gazlama",
-      "domestic": "Uy tikuv",
-      "specialty": "Maxsus"
+      "industrial": "To’g’ri chok",
+      "overlock": "Overlok",
+      "buttonhole": "Mahsus mashinalar",
+      "bartack": "Mahsus mashinalar",
+      "pattern": "Rashma",
+      "embroidery": "Mahsus mashinalar",
+      "heavy-duty": "Mahsus mashinalar",
+      "domestic": "Mahsus mashinalar",
+      "specialty": "Mahsus mashinalar",
+      "spare-parts": "Ehtiyot qisimlar",
+      "accessories": "Aksessuarlar"
     },
     "filters_label": {
       "inStock": "Faqat mavjud",
@@ -179,7 +181,7 @@
     "loading": "Yuklanmoqda...",
     "error": "Xatolik yuz berdi",
     "tryAgain": "Qayta urinib ko'ring",
-    "backToCatalog": "Katalogga qaytish",
+    "backToCatalog": "Mahsulotlarga qaytish",
     "price": "Narx",
     "uzs": "so'm",
     "seeAll": "Barchasini ko'rish",

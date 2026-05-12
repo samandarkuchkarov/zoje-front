@@ -7,7 +7,9 @@ export type ProductCategory =
   | 'embroidery'
   | 'heavy-duty'
   | 'domestic'
-  | 'specialty';
+  | 'specialty'
+  | 'spare-parts'
+  | 'accessories';
 
 export type ProductManual = {
   label: string;

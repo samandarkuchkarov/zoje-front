@@ -3,7 +3,16 @@
     "catalog": "Mahsulotlar",
     "about": "Biz haqimizda",
     "contact": "Aloqa",
-    "cart": "Savat"
+    "cart": "Savat",
+    "announcement": "10+ yildan beri tikuv uskunalari yetkazib beramiz | O'zbekistonda ZOJE rasmiy distribyutori",
+    "tagline": "Tikuv uskunalari va ehtiyot qismlari yetkazib berish",
+    "city": "Toshkent",
+    "cityLabel": "Viloyatni tanlang",
+    "search": "Sayt bo'yicha qidirish",
+    "sale": "Tikuv uskunalari aksiyalari",
+    "hoursShort": "Du - Sh 09:00 - 18:00",
+    "callback": "Qo'ng'iroq buyurtma qilish",
+    "repair": "Servis"
   },
   "home": {
     "hero": {
@@ -47,6 +56,36 @@
       "title": "Buyurtma berishga tayyormisiz?",
       "subtitle": "Menejerimiz siz bilan bog'lanadi va barcha savollaringizga javob beradi",
       "button": "Hozir buyurtma bering"
+    },
+    "repair": {
+      "eyebrow": "Servis xizmati",
+      "title": "ZOJE tikuv uskunalarini ta'mirlash",
+      "subtitle": "Elektronika, mexanika, motor va tikuv sifatini professional diagnostika qilamiz. ZOJE uskunangizni ishlab chiqarishga tayyor holatga qaytaramiz.",
+      "highlight1": "Tez diagnostika",
+      "highlight2": "Elektronika va sensorlar",
+      "highlight3": "Kafolatli servis",
+      "button": "Servis sahifasini ochish",
+      "diagnostics": "Diagnostika va sozlash",
+      "ready": "Usta tayyor"
+    },
+    "aboutCompany": {
+      "eyebrow": "Kompaniya haqida",
+      "badge": "Rasmiy distribyutor",
+      "title": "O'zbekistonda ZOJE uchun ishonchli hamkor",
+      "subtitle": "2014-yildan beri tikuv korxonalari, sexlar va ustaxonalarni original ZOJE uskunalari, servis va ehtiyot qismlar bilan ta'minlaymiz.",
+      "visual1": "Original ZOJE uskunalari",
+      "visual2": "Servis va sozlash",
+      "visual3": "Yetkazib berish va qo'llab-quvvatlash",
+      "point1": "Biz faqat mashina sotmaymiz: ishlab chiqarishingizga mos model tanlash, ishga tushirish va texnik xizmatda ham yoningizda bo'lamiz.",
+      "point2": "Toshkent shahri va viloyatlar bo'ylab mijozlar bilan ishlaymiz, ZOJE uskunalari uchun maslahat va servisni bir joyda beramiz.",
+      "button": "Kompaniya haqida",
+      "contact": "Aloqaga chiqish",
+      "stats": {
+        "founded": "faoliyat boshlangan yil",
+        "clients": "mijozlar va korxonalar",
+        "regions": "viloyatlarda xizmat",
+        "experience": "yillik tajriba"
+      }
     }
   },
   "catalog": {
@@ -84,6 +123,8 @@
   "product": {
     "addToCart": "Savatga qo'shish",
     "addedToCart": "Savatga qo'shildi",
+    "new": "Yangi",
+    "bestseller": "Hit",
     "inStock": "Mavjud",
     "outOfStock": "Mavjud emas",
     "specs": "Texnik xususiyatlar",

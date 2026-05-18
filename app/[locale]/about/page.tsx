@@ -12,7 +12,7 @@ export default async function AboutPage() {
   const stats = [
     { icon: Award, value: '2014', key: 'founded' },
     { icon: Users, value: '5000+', key: 'clients' },
-    { icon: MapPin, value: '14', key: 'regions' },
+    { icon: MapPin, value: '12', key: 'regions' },
     { icon: Clock, value: '10+', key: 'experience' },
   ] as const;
 

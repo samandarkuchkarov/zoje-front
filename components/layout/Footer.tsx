@@ -1,12 +1,17 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/navigation';
 import { Link } from '@/i18n/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
   const t = useTranslations();
+  const pathname = usePathname();
+  const isRepairPage = pathname.includes('/repair');
 
   return (
-    <footer className="bg-[#0E5226] text-white mt-auto">
+    <footer className={isRepairPage ? 'bg-[#0F1B14] text-white mt-auto' : 'bg-[#0E5226] text-white mt-auto'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
@@ -26,6 +31,7 @@ export function Footer() {
                 { href: '/catalog', label: t('nav.catalog') },
                 { href: '/about', label: t('nav.about') },
                 { href: '/contact', label: t('nav.contact') },
+                { href: '/repair', label: t('nav.repair') },
                 { href: '/cart', label: t('nav.cart') },
               ].map((l) => (
                 <li key={l.href}>
@@ -70,7 +76,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <a
-                  href="https://t.me/zoje_uzb"
+                  href="https://t.me/ZOJEUZBEKISTAN"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Telegram"

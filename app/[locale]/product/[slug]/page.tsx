@@ -6,6 +6,7 @@ import { getProductBySlug, getRelatedProducts } from '@/lib/products';
 import { ProductGallery } from '@/components/product/ProductGallery';
 import { AddToCartButton } from '@/components/product/AddToCartButton';
 import { ProductCard } from '@/components/catalog/ProductCard';
+import { NewBadge, BestsellerBadge } from '@/components/catalog/ProductBadges';
 import { PriceTag } from '@/components/shared/PriceTag';
 import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
 import { Badge } from '@/components/ui/badge';
@@ -74,9 +75,13 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="space-y-5">
           <div>
-            <Badge variant="secondary" className="mb-3 text-xs">
-              {tCat(`categories.${category}`)}
-            </Badge>
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <Badge variant="secondary" className="h-7 rounded-full px-3 text-xs">
+                {tCat(`categories.${category}`)}
+              </Badge>
+              {product.newModel && <NewBadge size="md" label={t('new')} />}
+              {product.bestseller && <BestsellerBadge size="md" label={t('bestseller')} />}
+            </div>
             <h1 className="font-heading font-extrabold text-2xl md:text-3xl text-balance">
               {product.name[lang]}
             </h1>

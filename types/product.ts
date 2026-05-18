@@ -38,6 +38,8 @@ export type Product = {
   sortOrder?: number;
   inStock: boolean;
   featured?: boolean;
+  newModel?: boolean;
+  bestseller?: boolean;
   hidden?: boolean;
   placeholder?: boolean;
   officialUrl?: string;
@@ -49,11 +51,12 @@ export type Product = {
   shortDescription: { uz: string; ru: string };
   description: { uz: string; ru: string };
   specs: {
-    motor?: string;
-    stitchType?: string;
     maxSpeed?: string;
+    threadCount?: string;
+    needleCount?: string;
     needleSystem?: string;
-    stitchLength?: string;
+    fabricType?: string;
+    presserFoot?: string;
     voltage?: string;
     weight?: string;
     [key: string]: string | undefined;

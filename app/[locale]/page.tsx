@@ -1,10 +1,14 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { connection } from 'next/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { WhyUsSection } from '@/components/home/WhyUsSection';
+import { ReviewsSection } from '@/components/home/ReviewsSection';
+import { TelegramNewsStrip } from '@/components/home/TelegramNewsStrip';
 import { CtaSection } from '@/components/home/CtaSection';
+import { AboutCompanySection } from '@/components/home/AboutCompanySection';
 import { ProductCard } from '@/components/catalog/ProductCard';
 import { getFeaturedProducts } from '@/lib/products';
+import { getLatestChannelPosts } from '@/lib/telegram-channel';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
@@ -13,8 +17,12 @@ import { ArrowRight } from 'lucide-react';
 export default async function HomePage() {
   const t = await getTranslations('home');
   const tCommon = await getTranslations('common');
+  const locale = (await getLocale()) as 'uz' | 'ru';
   await connection();
-  const featured = await getFeaturedProducts();
+  const [featured, telegramPosts] = await Promise.all([
+    getFeaturedProducts(),
+    getLatestChannelPosts('ZOJEUZBEKISTAN', 8),
+  ]);
 
   return (
     <>
@@ -42,7 +50,10 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <AboutCompanySection />
       <WhyUsSection />
+      <TelegramNewsStrip posts={telegramPosts} channel="ZOJEUZBEKISTAN" locale={locale} />
+      <ReviewsSection locale={locale} />
       <CtaSection />
     </>
   );

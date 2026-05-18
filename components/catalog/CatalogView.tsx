@@ -27,9 +27,23 @@ export function CatalogView({ products }: CatalogViewProps) {
   const category = params.get('category') as ProductCategory | null;
   const inStock = params.get('inStock') === '1';
   const sort = params.get('sort') ?? 'newest';
+  const query = params.get('q')?.trim().toLowerCase() ?? ''; 
 
   let filtered = products;
   if (category) filtered = filtered.filter((p) => p.category === category);
+  if (query) {
+    filtered = filtered.filter((p) =>
+      [
+        p.model,
+        p.name.uz,
+        p.name.ru,
+        p.shortDescription.uz,
+        p.shortDescription.ru,
+      ]
+        .filter(Boolean)
+        .some((value) => value.toLowerCase().includes(query))
+    );
+  }
   if (inStock) filtered = filtered.filter((p) => p.inStock);
 
   if (sort === 'priceAsc') filtered = [...filtered].sort((a, b) => a.price - b.price);

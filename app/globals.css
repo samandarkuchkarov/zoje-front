@@ -133,3 +133,29 @@
 .animate-glow-pulse {
   animation: glow-pulse 2.5s ease-in-out infinite;
 }
+
+
+@keyframes repair-scanline {
+  0%, 100% { transform: translateY(0); opacity: 0.2; }
+  50% { transform: translateY(220px); opacity: 0.75; }
+}
+
+@keyframes repair-flow {
+  0% { transform: translateX(-35%); }
+  100% { transform: translateX(35%); }
+}
+
+.repair-grid {
+  background-image:
+    linear-gradient(rgba(27, 122, 58, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 122, 58, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.repair-scanline {
+  animation: repair-scanline 4.8s ease-in-out infinite;
+}
+
+.repair-flow {
+  animation: repair-flow 7s ease-in-out infinite alternate;
+}

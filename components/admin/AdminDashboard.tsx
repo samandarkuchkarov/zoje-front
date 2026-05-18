@@ -67,6 +67,8 @@ type ProductForm = {
   oldPrice: string;
   inStock: boolean;
   featured: boolean;
+  newModel: boolean;
+  bestseller: boolean;
   hidden: boolean;
   nameUz: string;
   nameRu: string;
@@ -102,6 +104,8 @@ const emptyForm: ProductForm = {
   oldPrice: '',
   inStock: true,
   featured: false,
+  newModel: false,
+  bestseller: false,
   hidden: false,
   nameUz: '',
   nameRu: '',
@@ -116,25 +120,13 @@ const emptyForm: ProductForm = {
 
 const specFields = [
   { key: 'maxSpeed', label: 'Maksimal tezlik' },
-  { key: 'stitchLength', label: 'Tikish uzunligi' },
-  { key: 'needleSystem', label: 'Igna tizimi' },
-  { key: 'presserFoot', label: 'Bosuvchi oyoq' },
-  { key: 'voltage', label: 'Kuchlanish' },
-  { key: 'motor', label: 'Motor' },
-  { key: 'stitchType', label: 'Tikish turi' },
+  { key: 'threadCount', label: 'Ip soni' },
   { key: 'needleCount', label: 'Igna soni' },
-  { key: 'maxThickness', label: 'Maksimal qalinlik' },
-  { key: 'differential', label: 'Differensial' },
-  { key: 'lubrication', label: 'Moylash' },
-  { key: 'workingArea', label: 'Ish maydoni' },
-  { key: 'patternStorage', label: 'Naqsh xotirasi' },
-  { key: 'headRotation', label: 'Bosh aylanishi' },
-  { key: 'positioning', label: 'Pozitsiyalash' },
-  { key: 'cuttingArea', label: 'Kesish maydoni' },
-  { key: 'heads', label: 'Boshlar soni' },
-  { key: 'fileFormats', label: 'Fayl formatlari' },
-  { key: 'application', label: "Qo'llanish sohasi" },
-  { key: 'weight', label: 'Vazn' },
+  { key: 'needleSystem', label: 'Igna turi' },
+  { key: 'fabricType', label: 'Mato turi' },
+  { key: 'presserFoot', label: "Lapka ko'tarilish balandligi" },
+  { key: 'voltage', label: 'Kuchlanish' },
+  { key: 'weight', label: 'Vazni' },
 ];
 
 function lines(value: string) {
@@ -164,6 +156,8 @@ function productToForm(product: Product): ProductForm {
     oldPrice: product.oldPrice ? String(product.oldPrice) : '',
     inStock: product.inStock,
     featured: Boolean(product.featured),
+    newModel: Boolean(product.newModel),
+    bestseller: Boolean(product.bestseller),
     hidden: Boolean(product.hidden),
     nameUz: product.name.uz,
     nameRu: product.name.ru,
@@ -210,6 +204,8 @@ function formToProduct(
     sortOrder,
     inStock: form.inStock,
     featured: form.featured,
+    newModel: form.newModel,
+    bestseller: form.bestseller,
     hidden: form.hidden,
     name: { uz: form.nameUz.trim(), ru: form.nameRu.trim() },
     shortDescription: { uz: form.shortUz.trim(), ru: form.shortRu.trim() },
@@ -604,16 +600,24 @@ export function AdminDashboard() {
               </Field>
               <Field label="Narx"><Input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></Field>
               <Field label="Eski narx"><Input type="number" value={form.oldPrice} onChange={(e) => setForm({ ...form, oldPrice: e.target.value })} /></Field>
-              <div className="flex items-end gap-5">
-                <label className="flex items-center gap-2 text-sm">
+              <div className="md:col-span-2 grid gap-3 rounded-lg border border-border bg-muted/20 p-4 sm:grid-cols-2 lg:grid-cols-5">
+                <label className="flex min-h-10 items-center gap-2 text-sm leading-tight">
                   <Checkbox checked={form.inStock} onCheckedChange={(checked) => setForm({ ...form, inStock: checked === true })} />
                   Omborda bor
                 </label>
-                <label className="flex items-center gap-2 text-sm">
+                <label className="flex min-h-10 items-center gap-2 text-sm leading-tight">
                   <Checkbox checked={form.featured} onCheckedChange={(checked) => setForm({ ...form, featured: checked === true })} />
                   Tavsiya etilgan
                 </label>
-                <label className="flex items-center gap-2 text-sm">
+                <label className="flex min-h-10 items-center gap-2 text-sm leading-tight">
+                  <Checkbox checked={form.newModel} onCheckedChange={(checked) => setForm({ ...form, newModel: checked === true })} />
+                  New model
+                </label>
+                <label className="flex min-h-10 items-center gap-2 text-sm leading-tight">
+                  <Checkbox checked={form.bestseller} onCheckedChange={(checked) => setForm({ ...form, bestseller: checked === true })} />
+                  Bestseller
+                </label>
+                <label className="flex min-h-10 items-center gap-2 text-sm leading-tight">
                   <Checkbox checked={form.hidden} onCheckedChange={(checked) => setForm({ ...form, hidden: checked === true })} />
                   Saytda yashirish
                 </label>

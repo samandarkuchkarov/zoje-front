@@ -67,27 +67,26 @@ const UZ_TO_RU: Record<string, string> = {
 };
 
 const SPEC_LABELS: Record<string, { uz: string; ru: string }> = {
-  motor:        { uz: 'Motor',               ru: 'Мотор' },
-  stitchType:   { uz: 'Tikiш turi',          ru: 'Вид строчки' },
-  maxSpeed:     { uz: 'Maksimal tezlik',     ru: 'Макс. скорость' },
-  needleSystem: { uz: 'Igna tizimi',         ru: 'Система иглы' },
-  needleCount:  { uz: 'Igna soni',           ru: 'Кол-во игл' },
-  stitchLength: { uz: 'Tikiш uzunligi',      ru: 'Длина стежка' },
-  presserFoot:  { uz: 'Bosuvchi oyoq',       ru: 'Подъём лапки' },
-  maxThickness: { uz: 'Maks. qalinlik',      ru: 'Макс. толщина' },
-  differential: { uz: 'Differensial',        ru: 'Дифференциал' },
-  lubrication:  { uz: "Moylash",             ru: 'Смазка' },
-  workingArea:  { uz: 'Ish maydoni',         ru: 'Рабочая зона' },
-  patternStorage:{ uz: 'Naqsh xotirasi',     ru: 'Память узоров' },
-  headRotation: { uz: 'Bosh aylanishi',      ru: 'Поворот головки' },
-  positioning:  { uz: 'Pozitsiyalash',       ru: 'Позиционирование' },
-  cuttingArea:  { uz: 'Kesish maydoni',      ru: 'Зона раскроя' },
-  heads:        { uz: 'Boshlar soni',        ru: 'Кол-во головок' },
-  fileFormats:  { uz: 'Fayl formatlari',     ru: 'Форматы файлов' },
-  application:  { uz: 'Qo\'llanish sohasi', ru: 'Применение' },
-  voltage:      { uz: 'Kuchlanish',          ru: 'Напряжение' },
-  weight:       { uz: 'Vazn',               ru: 'Вес' },
+  maxSpeed:     { uz: 'Maksimal tezlik',                 ru: 'Макс. скорость' },
+  threadCount:  { uz: 'Ip soni',                          ru: 'Кол-во нитей' },
+  needleCount:  { uz: 'Igna soni',                        ru: 'Кол-во игл' },
+  needleSystem: { uz: 'Igna turi',                        ru: 'Тип иглы' },
+  fabricType:   { uz: 'Mato turi',                        ru: 'Тип ткани' },
+  presserFoot:  { uz: "Lapka ko'tarilish balandligi",     ru: 'Высота подъёма лапки' },
+  voltage:      { uz: 'Kuchlanish',                       ru: 'Напряжение' },
+  weight:       { uz: 'Vazni',                            ru: 'Вес' },
 };
+
+const SPEC_ORDER = [
+  'maxSpeed',
+  'threadCount',
+  'needleCount',
+  'needleSystem',
+  'fabricType',
+  'presserFoot',
+  'voltage',
+  'weight',
+];
 
 type Props = {
   specs: Product['specs'];
@@ -96,8 +95,8 @@ type Props = {
 export function SpecsTable({ specs }: Props) {
   const locale = useLocale() as 'uz' | 'ru';
   const shouldReduce = useReducedMotion();
-  const entries = Object.entries(specs).filter(
-    ([, v]) => v !== undefined && v !== '—'
+  const entries = SPEC_ORDER.map((key) => [key, specs[key]] as const).filter(
+    ([, value]) => value !== undefined && value !== '—'
   );
 
   return (

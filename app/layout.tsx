@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, Manrope } from 'next/font/google';
 import './globals.css';
 
@@ -30,7 +31,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${manrope.variable}`}
     >
-      <body className="min-h-full antialiased">{children}</body>
+      <body className="min-h-full antialiased">
+        {children}
+        <Script src="//code.jivo.ru/widget/EdnbcYvA5Q" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }

@@ -10,6 +10,7 @@ import { useCartStore } from '@/store/cart';
 import { PriceTag } from '@/components/shared/PriceTag';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { NewBadge, BestsellerBadge } from '@/components/catalog/ProductBadges';
 import type { Product } from '@/types/product';
 
 type Props = {
@@ -21,6 +22,14 @@ export function ProductCard({ product, index = 0 }: Props) {
   const t = useTranslations('product');
   const locale = useLocale() as 'uz' | 'ru';
   const addItem = useCartStore((s) => s.addItem);
+  const localizedName = product.name[locale];
+  const modelName = product.model.trim();
+  const modelIndex = modelName ? localizedName.toLowerCase().indexOf(modelName.toLowerCase()) : -1;
+  const titleEnd = modelIndex >= 0 ? modelIndex + modelName.length : localizedName.length;
+  const cardTitle = localizedName.slice(0, titleEnd).trim();
+  const cardSubtitle = modelIndex >= 0
+    ? localizedName.slice(titleEnd).replace(/^[-,: ]+/, '').trim()
+    : '';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -55,14 +64,19 @@ export function ProductCard({ product, index = 0 }: Props) {
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            <div className="absolute top-2 left-2 flex flex-col gap-1">
+            <div className="absolute left-3 top-3 flex max-w-[calc(100%-1.5rem)] flex-wrap gap-1.5">
+              {product.newModel && <NewBadge size="sm" label={t('new')} />}
+              {product.bestseller && <BestsellerBadge size="sm" label={t('bestseller')} />}
               {product.oldPrice && (
-                <Badge className="bg-accent-gold text-white text-[10px] px-1.5 py-0.5">
+                <Badge className="h-6 rounded-full bg-rose-500 px-2 text-[10px] font-extrabold uppercase tracking-wider text-white ring-1 ring-inset ring-white/25 shadow-sm">
                   SALE
                 </Badge>
               )}
               {!product.inStock && (
-                <Badge variant="secondary" className="text-[10px] px-1.5 py-0.5">
+                <Badge
+                  variant="secondary"
+                  className="h-6 rounded-full px-2 text-[10px] font-semibold uppercase tracking-wider"
+                >
                   {t('outOfStock')}
                 </Badge>
               )}
@@ -83,12 +97,16 @@ export function ProductCard({ product, index = 0 }: Props) {
 
           {/* Info — grows to fill remaining space, price pinned to bottom */}
           <div className="flex flex-col flex-1 p-4">
-            <p className="text-xs text-muted-foreground font-medium mb-1">
-              {product.model}
-            </p>
-            <h3 className="font-semibold text-sm leading-snug line-clamp-2 text-foreground group-hover:text-brand transition-colors flex-1">
-              {product.name[locale]}
-            </h3>
+            <div className="flex-1">
+              <h3 className="font-semibold text-base leading-snug line-clamp-1 text-foreground group-hover:text-brand transition-colors">
+                {cardTitle}
+              </h3>
+              {cardSubtitle && (
+                <p className="mt-1 text-sm leading-snug line-clamp-2 text-muted-foreground transition-colors group-hover:text-foreground/80">
+                  {cardSubtitle}
+                </p>
+              )}
+            </div>
             <div className="mt-3 flex items-center justify-between">
               <PriceTag
                 price={product.price}

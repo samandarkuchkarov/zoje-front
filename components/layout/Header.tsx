@@ -174,7 +174,7 @@ export function Header() {
               <span>{t("hoursShort")}</span>
             </div>
             <div className="flex items-center gap-2">
-              <a href="https://www.instagram.com/zoje_tashkent?igsh=MmJkOWdzc2toYmJo" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E1306C] text-white transition-transform hover:-translate-y-0.5">
+              <a href="https://www.instagram.com/zojeuzbekistan?igsh=MXBremlydmMzYXd3Mg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E1306C] text-white transition-transform hover:-translate-y-0.5">
                 <Camera className="h-4 w-4" />
               </a>
               <a href="https://t.me/ZOJEUZBEKISTAN" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#229ED9] text-white transition-transform hover:-translate-y-0.5">
@@ -184,9 +184,9 @@ export function Header() {
                 {t("callback")}
               </Link>
             </div>
-            <a href="mailto:zoje.tashkent20@gmail.com" className="flex items-center gap-3 font-semibold text-foreground hover:text-brand">
+            <a href="mailto:Otabek.zoje@gmail.com" className="flex items-center gap-3 font-semibold text-foreground hover:text-brand">
               <Mail className="h-5 w-5 text-brand" />
-              zoje.tashkent20@gmail.com
+              Otabek.zoje@gmail.com
             </a>
           </div>
 

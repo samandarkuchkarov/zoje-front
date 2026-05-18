@@ -31,7 +31,7 @@ export default async function ContactPage() {
           {[
             { icon: Phone, label: t('phone'), value: '+998 99 097 55 11', href: 'tel:+998990975511' },
             { icon: Phone, label: t('servicePhone'), value: '+998 99 720 55 11', href: 'tel:+998997205511' },
-            { icon: Mail, label: t('email'), value: 'zoje.tashkent20@gmail.com', href: 'mailto:zoje.tashkent20@gmail.com' },
+            { icon: Mail, label: t('email'), value: 'Otabek.zoje@gmail.com', href: 'mailto:Otabek.zoje@gmail.com' },
             { icon: MapPin, label: t('address'), value: tFooter('address'), href: undefined },
             { icon: Clock, label: t('hours'), value: t('hoursValue'), href: undefined },
           ].map(({ icon: Icon, label, value, href }) => (

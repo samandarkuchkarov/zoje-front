@@ -88,7 +88,7 @@ export function Footer() {
                   Telegram
                 </a>
                 <a
-                  href="https://www.instagram.com/zoje_tashkent?igsh=MmJkOWdzc2toYmJo"
+                  href="https://www.instagram.com/zojeuzbekistan?igsh=MXBremlydmMzYXd3Mg=="
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -117,8 +117,8 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-white/40" />
-                <a href="mailto:zoje.tashkent20@gmail.com" className="hover:text-white transition-colors">
-                  zoje.tashkent20@gmail.com
+                <a href="mailto:Otabek.zoje@gmail.com" className="hover:text-white transition-colors">
+                  Otabek.zoje@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/70">

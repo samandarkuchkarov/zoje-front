@@ -28,10 +28,10 @@ export function WhyUsSection() {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#F7FAF8] py-14 md:py-24">
+    <section className="relative overflow-hidden bg-white py-14 md:py-24">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        className="hidden"
         style={{
           backgroundImage:
             'linear-gradient(rgba(27,122,58,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(27,122,58,0.12) 1px, transparent 1px)',
@@ -40,11 +40,11 @@ export function WhyUsSection() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 right-[-6rem] h-[420px] w-[420px] rounded-full bg-brand/10 blur-3xl"
+        className="hidden"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 left-[-4rem] h-[360px] w-[360px] rounded-full bg-accent-gold/10 blur-3xl"
+        className="hidden"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -83,11 +83,11 @@ export function WhyUsSection() {
                   duration: 0.45,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/15"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg hover:shadow-black/5"
               >
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 opacity-[0.12] transition-opacity duration-300 group-hover:opacity-[0.22]"
+                  className="hidden"
                   style={{
                     backgroundImage:
                       'linear-gradient(rgba(27,122,58,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(27,122,58,0.2) 1px, transparent 1px)',
@@ -96,7 +96,7 @@ export function WhyUsSection() {
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand/0 blur-3xl transition-all duration-500 group-hover:bg-brand/20"
+                  className="hidden"
                 />
 
                 <span
@@ -109,14 +109,14 @@ export function WhyUsSection() {
                 <div className="relative">
                   <div className="flex items-start justify-between">
                     <div className="relative">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#0F1B14] to-[#1A2C20] text-brand-light shadow-lg shadow-black/20 ring-1 ring-white/5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-brand/15 bg-brand-light text-brand shadow-sm">
                         <Icon className="h-6 w-6" strokeWidth={2.25} />
                       </div>
                       <span
                         aria-hidden
                         className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full border-2 border-white bg-brand shadow-sm shadow-brand/40"
                       >
-                        <span className="absolute inset-0 animate-ping rounded-full bg-brand/60" />
+                        <span className="hidden" />
                       </span>
                     </div>
                     <span className="font-mono text-[11px] font-bold tracking-[0.18em] text-muted-foreground/70">

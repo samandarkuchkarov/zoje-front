@@ -131,7 +131,7 @@ export function ReviewsSection({ locale }: Props) {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-[#0F1B14] via-[#11241A] to-[#0A1410] py-16 text-white md:py-24"
+      className="relative overflow-hidden bg-white py-16 text-foreground md:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -142,29 +142,29 @@ export function ReviewsSection({ locale }: Props) {
     >
       <div
         aria-hidden
-        className="repair-flow pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#D4A017,#1B7A3A,transparent)]"
+        className="hidden"
       />
-      <div className="repair-grid pointer-events-none absolute inset-0 opacity-[0.15]" />
+      <div className="hidden" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -left-24 h-[460px] w-[460px] rounded-full bg-brand/15 blur-3xl"
+        className="hidden"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -right-24 h-[460px] w-[460px] rounded-full bg-accent-gold/10 blur-3xl"
+        className="hidden"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-accent-gold-light">
-              <span className="h-px w-6 bg-accent-gold-light/60" />
+            <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-brand">
+              <span className="h-px w-6 bg-brand/60" />
               {labels.eyebrow}
             </span>
             <h2 className="mt-3 font-heading text-3xl font-extrabold leading-tight text-balance md:text-5xl">
               {labels.title}
             </h2>
-            <p className="mt-4 max-w-xl text-white/65 text-pretty md:text-lg">
+            <p className="mt-4 max-w-xl text-muted-foreground text-pretty md:text-lg">
               {labels.subtitle}
             </p>
           </div>
@@ -174,7 +174,7 @@ export function ReviewsSection({ locale }: Props) {
               type="button"
               onClick={() => go((index - 1 + total) % total)}
               aria-label={labels.prev}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:border-white/30 hover:bg-white/10"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-sm transition-all hover:border-brand/30 hover:text-brand"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -190,15 +190,15 @@ export function ReviewsSection({ locale }: Props) {
         </div>
 
         <div className="relative mt-10">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm md:p-10 lg:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-lg shadow-black/5 md:p-10 lg:p-12">
             <Quote
               aria-hidden
-              className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-white/[0.04] md:-right-2 md:h-56 md:w-56"
+              className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-brand/[0.05] md:-right-2 md:h-56 md:w-56"
               strokeWidth={1}
             />
             <span
               aria-hidden
-              className="pointer-events-none absolute -left-2 -top-6 select-none font-heading text-[120px] font-extrabold leading-none text-brand/15 md:text-[180px]"
+              className="pointer-events-none absolute -left-2 -top-6 select-none font-heading text-[120px] font-extrabold leading-none text-brand/8 md:text-[180px]"
             >
               “
             </span>
@@ -233,12 +233,12 @@ export function ReviewsSection({ locale }: Props) {
                         }
                       />
                     ))}
-                    <span className="ml-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">
+                    <span className="ml-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
                       {review.rating}.0 / 5.0
                     </span>
                   </div>
 
-                  <p className="mt-6 text-balance font-heading text-xl font-semibold leading-relaxed text-white md:text-2xl lg:text-3xl">
+                  <p className="mt-6 text-balance font-heading text-xl font-semibold leading-relaxed text-foreground md:text-2xl lg:text-3xl">
                     “{review.quote[locale]}”
                   </p>
 
@@ -247,13 +247,13 @@ export function ReviewsSection({ locale }: Props) {
                       {review.initials}
                     </div>
                     <div className="min-w-0">
-                      <p className="font-heading text-base font-extrabold leading-tight text-white">
+                      <p className="font-heading text-base font-extrabold leading-tight text-foreground">
                         {review.name}
                       </p>
-                      <p className="mt-0.5 text-sm text-white/65">
+                      <p className="mt-0.5 text-sm text-muted-foreground">
                         {review.role[locale]}
                       </p>
-                      <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold-light">
+                      <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
                         <MapPin className="h-3 w-3" />
                         {review.location[locale]}
                       </p>
@@ -262,20 +262,20 @@ export function ReviewsSection({ locale }: Props) {
                 </div>
 
                 <div className="flex flex-row gap-3 md:flex-col md:items-end md:gap-4">
-                  <div className="flex flex-col items-start rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur md:items-end">
-                    <span className="font-heading text-3xl font-extrabold leading-none text-accent-gold-light md:text-4xl">
+                  <div className="flex flex-col items-start rounded-2xl border border-brand/15 bg-brand-light px-4 py-3 md:items-end">
+                    <span className="font-heading text-3xl font-extrabold leading-none text-brand md:text-4xl">
                       {review.years}
                     </span>
-                    <span className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">
+                    <span className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
                       {labels.yearsLabel}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 self-end rounded-full border border-brand/30 bg-brand/10 px-3 py-1.5">
+                  <div className="flex items-center gap-2 self-end rounded-full border border-brand/15 bg-brand-light px-3 py-1.5">
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inset-0 animate-ping rounded-full bg-brand-light/70" />
-                      <span className="relative h-2 w-2 rounded-full bg-brand-light" />
+                      <span className="hidden" />
+                      <span className="relative h-2 w-2 rounded-full bg-brand" />
                     </span>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand-light">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
                       {labels.verified}
                     </span>
                   </div>
@@ -285,9 +285,9 @@ export function ReviewsSection({ locale }: Props) {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <span className="font-mono text-xs font-bold tracking-[0.22em] text-white/55">
+            <span className="font-mono text-xs font-bold tracking-[0.22em] text-muted-foreground">
               {String(index + 1).padStart(2, '0')}
-              <span className="mx-1 text-white/25">/</span>
+              <span className="mx-1 text-muted-foreground/35">/</span>
               {String(total).padStart(2, '0')}
             </span>
             <div
@@ -309,8 +309,8 @@ export function ReviewsSection({ locale }: Props) {
                   <span
                     className={
                       i === index
-                        ? 'absolute inset-0 rounded-full bg-white/10'
-                        : 'absolute inset-0 rounded-full bg-white/15 transition-colors group-hover:bg-white/35'
+                        ? 'absolute inset-0 rounded-full bg-brand/15'
+                        : 'absolute inset-0 rounded-full bg-foreground/15 transition-colors group-hover:bg-foreground/30'
                     }
                   />
                   {i === index && (
@@ -322,7 +322,7 @@ export function ReviewsSection({ locale }: Props) {
                         duration: paused || reduceMotion ? 0 : ROTATE_MS / 1000,
                         ease: 'linear',
                       }}
-                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-brand-light via-accent-gold to-brand-light"
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-brand via-accent-gold to-brand"
                     />
                   )}
                 </button>

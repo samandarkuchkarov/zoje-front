@@ -138,7 +138,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[75vh] sm:min-h-[90vh] flex items-center overflow-hidden"
+      className="relative min-h-0 lg:min-h-[620px] flex items-start overflow-hidden"
       role="region"
       aria-roledescription="carousel"
       aria-label={locale === 'ru' ? 'Главный баннер' : 'Asosiy banner'}
@@ -167,7 +167,7 @@ export function HeroSection() {
         className="pointer-events-none absolute -bottom-24 -left-16 h-[360px] w-[360px] rounded-full bg-accent-gold/10 blur-3xl"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 pb-10 sm:pt-8 sm:pb-14 lg:pt-10 lg:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="relative">
             <AnimatePresence mode="wait">

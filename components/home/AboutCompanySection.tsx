@@ -17,7 +17,7 @@ export function AboutCompanySection() {
 
   return (
     <section className="relative overflow-hidden py-14 md:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(27,122,58,0.13),transparent_34%),radial-gradient(circle_at_82%_0%,rgba(212,160,23,0.14),transparent_30%),linear-gradient(135deg,#FFFFFF_0%,#F5FBF7_42%,#EAF6EE_100%)]" />
+      <div className="absolute inset-0 bg-white" />
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(27,122,58,0.25),transparent)]" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <motion.div
@@ -25,11 +25,11 @@ export function AboutCompanySection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="relative min-h-[420px] overflow-hidden rounded-2xl border border-border bg-[#0F1B14] shadow-xl shadow-brand/10"
+          className="relative min-h-[420px] overflow-hidden rounded-2xl border border-border bg-white shadow-lg shadow-black/5"
         >
-          <div className="repair-grid absolute inset-0 opacity-20" />
-          <div className="repair-flow absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,transparent,#D4A017,#1B7A3A,transparent)]" />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(180deg,transparent,rgba(27,122,58,0.35))]" />
+          <div className="hidden" />
+          <div className="hidden" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(180deg,transparent,rgba(15,27,20,0.42))]" />
 
           <div className="absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-extrabold uppercase tracking-wide text-accent-gold-light backdrop-blur">
             <ShieldCheck className="h-3.5 w-3.5" />

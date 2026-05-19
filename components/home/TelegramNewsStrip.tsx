@@ -107,10 +107,10 @@ export function TelegramNewsStrip({ posts, channel, locale }: Props) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-[#F4FAFD] to-white py-14 md:py-20">
+    <section className="relative overflow-hidden border-y border-border/70 bg-white py-14 md:py-20">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        className="hidden"
         style={{
           backgroundImage:
             'linear-gradient(rgba(34,158,217,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(34,158,217,0.14) 1px, transparent 1px)',
@@ -119,12 +119,12 @@ export function TelegramNewsStrip({ posts, channel, locale }: Props) {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-20 right-[-6rem] h-[420px] w-[420px] rounded-full blur-3xl"
+        className="hidden"
         style={{ backgroundColor: `${TG}1A` }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 left-[-4rem] h-[360px] w-[360px] rounded-full bg-brand/10 blur-3xl"
+        className="hidden"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -247,10 +247,10 @@ export function TelegramNewsStrip({ posts, channel, locale }: Props) {
                       )}
                     </div>
                   ) : (
-                    <div className="relative h-16 shrink-0 overflow-hidden bg-gradient-to-br from-[#0F1B14] via-[#11241A] to-[#0A1410]">
+                    <div className="relative h-16 shrink-0 overflow-hidden bg-[#F4FAFD]">
                       <div
                         aria-hidden
-                        className="absolute inset-0 opacity-25"
+                        className="hidden"
                         style={{
                           backgroundImage:
                             'linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)',
@@ -259,15 +259,15 @@ export function TelegramNewsStrip({ posts, channel, locale }: Props) {
                       />
                       <Quote
                         aria-hidden
-                        className="absolute right-3 top-1 h-14 w-14 text-white/15"
+                        className="absolute right-3 top-1 h-14 w-14 text-[#229ED9]/15"
                         strokeWidth={1.2}
                       />
-                      <div className="absolute left-3 top-1/2 inline-flex -translate-y-1/2 items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+                      <div className="absolute left-3 top-1/2 inline-flex -translate-y-1/2 items-center gap-1.5 rounded-full border border-[#229ED9]/15 bg-white px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#176A91] shadow-sm">
                         <Send className="h-3 w-3" style={{ color: '#7CC4ED' }} />
                         {formatRelative(post.date, locale)}
                       </div>
                       {post.views && (
-                        <div className="absolute right-12 top-1/2 inline-flex -translate-y-1/2 items-center gap-1 rounded-full bg-white/10 px-2 py-1 font-mono text-[10px] font-bold tracking-wider text-white backdrop-blur">
+                        <div className="absolute right-12 top-1/2 inline-flex -translate-y-1/2 items-center gap-1 rounded-full border border-[#229ED9]/15 bg-white px-2 py-1 font-mono text-[10px] font-bold tracking-wider text-[#176A91] shadow-sm">
                           <Eye className="h-3 w-3" />
                           {post.views}
                         </div>

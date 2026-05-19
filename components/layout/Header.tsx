@@ -3,7 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { Clock3, Camera, Mail, MapPin, Menu, PercentCircle, Phone, Search, Send, ShoppingCart, X } from 'lucide-react';
+import { Clock3, Camera, Globe, Mail, MapPin, Menu, PercentCircle, Phone, Search, Send, ShoppingCart, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { useCartStore } from '@/store/cart';
@@ -203,70 +203,122 @@ export function Header() {
           </button>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-12 items-center justify-between">
-            <Link href="/" className="shrink-0 lg:hidden" aria-label="ZOJE home">
-              <Image
-                src="/logo.PNG"
-                alt="ZOJE"
-                width={92}
-                height={36}
-                priority
-                className="block h-9 w-auto"
-              />
-            </Link>
+        <div className="border-t border-border/60 bg-[linear-gradient(180deg,#FFFFFF_0%,#FAFCFA_100%)] lg:shadow-[0_1px_0_rgba(15,27,20,0.04)]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex h-12 items-center justify-between lg:h-14">
+              <Link href="/" className="shrink-0 lg:hidden" aria-label="ZOJE home">
+                <Image
+                  src="/logo.PNG"
+                  alt="ZOJE"
+                  width={92}
+                  height={36}
+                  priority
+                  className="block h-9 w-auto"
+                />
+              </Link>
 
-            <nav className="hidden lg:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={switchLocale}
-                className="text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-border hover:bg-brand-light hover:border-brand/30 transition-colors text-muted-foreground hover:text-brand"
-              >
-                {locale === 'uz' ? 'RU' : 'UZ'}
-              </button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="relative lg:hidden"
-                onClick={() => setCartOpen(true)}
-              >
-                <ShoppingCart className="w-5 h-5" />
-                <AnimatePresence>
-                  {hydrated && totalItems > 0 && (
-                    <motion.span
-                      key={totalItems}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      transition={{ duration: 0.25, ease: 'backOut' }}
-                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand text-white text-[10px] font-bold flex items-center justify-center"
+              <nav className="hidden lg:flex items-center gap-1">
+                {navLinks.map((link) => {
+                  const active =
+                    pathname === link.href || pathname.startsWith(link.href + '/');
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={cn(
+                        'group relative inline-flex h-10 items-center rounded-lg px-3.5 text-sm font-bold tracking-tight transition-colors',
+                        active
+                          ? 'text-brand'
+                          : 'text-foreground/75 hover:text-foreground'
+                      )}
                     >
-                      {totalItems > 9 ? '9+' : totalItems}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </Button>
+                      {link.label}
+                      <span
+                        aria-hidden
+                        className={cn(
+                          'pointer-events-none absolute inset-x-3.5 bottom-1.5 h-0.5 origin-left rounded-full bg-brand transition-transform duration-300',
+                          active
+                            ? 'scale-x-100'
+                            : 'scale-x-0 group-hover:scale-x-100'
+                        )}
+                      />
+                    </Link>
+                  );
+                })}
+              </nav>
 
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden"
-                onClick={() => setMobileOpen(!mobileOpen)}
-              >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </Button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={switchLocale}
+                  aria-label={locale === 'uz' ? 'Switch to Russian' : "O'zbekchaga o'tish"}
+                  className="group hidden items-center gap-1 rounded-full border border-border bg-white p-0.5 pl-2 text-[11px] font-extrabold uppercase tracking-wide shadow-sm transition-all hover:border-brand/40 hover:shadow lg:inline-flex"
+                >
+                  <Globe className="h-3.5 w-3.5 text-brand transition-transform duration-300 group-hover:rotate-12" />
+                  <span
+                    className={cn(
+                      'rounded-full px-2 py-1 transition-colors',
+                      locale === 'uz'
+                        ? 'bg-brand text-white shadow-sm'
+                        : 'text-muted-foreground'
+                    )}
+                  >
+                    UZ
+                  </span>
+                  <span
+                    className={cn(
+                      'rounded-full px-2 py-1 transition-colors',
+                      locale === 'ru'
+                        ? 'bg-brand text-white shadow-sm'
+                        : 'text-muted-foreground'
+                    )}
+                  >
+                    RU
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={switchLocale}
+                  aria-label={locale === 'uz' ? 'Switch to Russian' : "O'zbekchaga o'tish"}
+                  className="inline-flex items-center gap-1 rounded-full border border-border bg-white px-2.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wide text-foreground transition-colors hover:border-brand/40 hover:bg-brand-light hover:text-brand lg:hidden"
+                >
+                  <Globe className="h-3.5 w-3.5 text-brand" />
+                  {locale === 'uz' ? 'RU' : 'UZ'}
+                </button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative lg:hidden"
+                  onClick={() => setCartOpen(true)}
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  <AnimatePresence>
+                    {hydrated && totalItems > 0 && (
+                      <motion.span
+                        key={totalItems}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        transition={{ duration: 0.25, ease: 'backOut' }}
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand text-white text-[10px] font-bold flex items-center justify-center"
+                      >
+                        {totalItems > 9 ? '9+' : totalItems}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden"
+                  onClick={() => setMobileOpen(!mobileOpen)}
+                >
+                  {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </Button>
+              </div>
             </div>
           </div>
         </div>

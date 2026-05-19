@@ -74,7 +74,7 @@ const SPEC_LABELS: Record<string, { uz: string; ru: string }> = {
   fabricType:   { uz: 'Mato turi',                        ru: 'Тип ткани' },
   presserFoot:  { uz: "Lapka ko'tarilish balandligi",     ru: 'Высота подъёма лапки' },
   voltage:      { uz: 'Kuchlanish',                       ru: 'Напряжение' },
-  weight:       { uz: 'Vazni',                            ru: 'Вес' },
+  stitchLength: { uz: 'Chok uzunligi',                    ru: 'Длина стежка' },
 };
 
 const SPEC_ORDER = [
@@ -85,7 +85,7 @@ const SPEC_ORDER = [
   'fabricType',
   'presserFoot',
   'voltage',
-  'weight',
+  'stitchLength',
 ];
 
 type Props = {

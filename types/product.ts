@@ -58,7 +58,7 @@ export type Product = {
     fabricType?: string;
     presserFoot?: string;
     voltage?: string;
-    weight?: string;
+    stitchLength?: string;
     [key: string]: string | undefined;
   };
 };

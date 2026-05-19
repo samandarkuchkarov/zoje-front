@@ -18,6 +18,14 @@
   --color-accent-gold: #D4A017;
   --color-accent-gold-light: #FDF3D3;
 
+  /* Dark surface (used for hero / CTA / footer backgrounds) */
+  --color-surface-dark: #0F1B14;
+  --color-surface-dark-2: #1A2C20;
+
+  /* Social brand colors */
+  --color-social-instagram: #E1306C;
+  --color-social-telegram: #229ED9;
+
   /* shadcn tokens — overridden to green */
   --color-background: var(--background);
   --color-foreground: var(--foreground);

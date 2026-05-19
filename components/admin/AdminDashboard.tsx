@@ -126,7 +126,7 @@ const specFields = [
   { key: 'fabricType', label: 'Mato turi' },
   { key: 'presserFoot', label: "Lapka ko'tarilish balandligi" },
   { key: 'voltage', label: 'Kuchlanish' },
-  { key: 'weight', label: 'Vazni' },
+  { key: 'stitchLength', label: 'Chok uzunligi' },
 ];
 
 function lines(value: string) {

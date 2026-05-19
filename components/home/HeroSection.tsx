@@ -139,8 +139,6 @@ export function HeroSection() {
   return (
     <section
       className="relative min-h-[75vh] sm:min-h-[90vh] flex items-center overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
       role="region"
       aria-roledescription="carousel"
       aria-label={locale === 'ru' ? 'Главный баннер' : 'Asosiy banner'}
@@ -293,7 +291,11 @@ export function HeroSection() {
                 <span className="mx-1 text-muted-foreground/40">/</span>
                 {String(slides.length).padStart(2, '0')}
               </span>
-              <div className="flex items-center gap-2">
+              <div
+                className="flex items-center gap-2"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+              >
                 {slides.map((_, i) => (
                   <button
                     key={i}
@@ -302,6 +304,8 @@ export function HeroSection() {
                     aria-selected={i === index}
                     aria-label={`${locale === 'ru' ? 'Слайд' : 'Slayd'} ${i + 1}`}
                     onClick={() => setIndex(i)}
+                    onFocus={() => setPaused(true)}
+                    onBlur={() => setPaused(false)}
                     className="group relative h-1.5 overflow-hidden rounded-full transition-[width] duration-500 ease-out"
                     style={{ width: i === index ? 40 : 14 }}
                   >

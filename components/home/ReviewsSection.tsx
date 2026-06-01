@@ -152,18 +152,12 @@ export function ReviewsSection({ locale }: Props) {
         </div>
 
         <div className="relative mt-10">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-lg shadow-black/5 md:p-10 lg:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-white shadow-lg shadow-black/5">
             <Quote
               aria-hidden
-              className="pointer-events-none absolute -right-6 -top-8 h-44 w-44 text-brand/[0.05] md:-right-2 md:h-56 md:w-56"
+              className="pointer-events-none absolute -right-6 -top-8 z-10 h-40 w-40 text-brand/[0.06] md:-right-2 md:h-56 md:w-56"
               strokeWidth={1}
             />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -left-2 -top-6 select-none font-heading text-[120px] font-extrabold leading-none text-brand/8 md:text-[180px]"
-            >
-              “
-            </span>
 
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
@@ -181,67 +175,67 @@ export function ReviewsSection({ locale }: Props) {
                     : { opacity: 0, x: -direction * 40, filter: 'blur(6px)' }
                 }
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
+                className="relative grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
               >
-                <div>
-                  <div className="flex items-center gap-1.5 text-accent-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={
-                          i < review.rating
-                            ? 'h-4 w-4 fill-accent-gold text-accent-gold'
-                            : 'h-4 w-4 text-white/20'
-                        }
-                      />
-                    ))}
-                    <span className="ml-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                      {review.rating}.0 / 5.0
-                    </span>
-                  </div>
-
-                  <p className="mt-6 text-balance font-heading text-xl font-semibold leading-relaxed text-foreground md:text-2xl lg:text-3xl">
-                    “{review.quote[locale]}”
-                  </p>
-
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full bg-brand-light shadow-lg shadow-brand/15 ring-2 ring-brand/20">
-                      <Image
-                        src={review.image}
-                        alt={review.name}
-                        fill
-                        sizes="64px"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-heading text-base font-extrabold leading-tight text-foreground">
-                        {review.name}
-                      </p>
-                      <p className="mt-0.5 text-sm text-muted-foreground">
-                        {review.role[locale]}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-row gap-3 md:flex-col md:items-end md:gap-4">
-                  <div className="flex flex-col items-start rounded-2xl border border-brand/15 bg-brand-light px-4 py-3 md:items-end">
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand/70">
+                <div className="relative aspect-[4/5] overflow-hidden bg-brand-light md:aspect-auto md:min-h-[480px] lg:min-h-[520px]">
+                  <Image
+                    src={review.image}
+                    alt={review.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                  <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/55 px-3 py-1.5 backdrop-blur md:bottom-6 md:left-6">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-accent-gold-light">
                       {labels.brandLabel}
                     </span>
-                    <span className="mt-1 font-heading text-2xl font-extrabold leading-none text-brand md:text-3xl">
+                    <span className="font-heading text-sm font-extrabold text-white">
                       {review.brand}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 self-end rounded-full border border-brand/15 bg-brand-light px-3 py-1.5">
+                  <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-3 py-1.5 backdrop-blur md:right-6 md:top-6">
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inset-0 animate-ping rounded-full bg-brand/60" />
-                      <span className="relative h-2 w-2 rounded-full bg-brand" />
+                      <span className="absolute inset-0 animate-ping rounded-full bg-white/70" />
+                      <span className="relative h-2 w-2 rounded-full bg-white" />
                     </span>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
+                    <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white">
                       {labels.verified}
                     </span>
+                  </div>
+                </div>
+
+                <div className="relative flex flex-col justify-between p-6 md:p-10 lg:p-12">
+                  <div>
+                    <div className="flex items-center gap-1.5 text-accent-gold">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={
+                            i < review.rating
+                              ? 'h-4 w-4 fill-accent-gold text-accent-gold'
+                              : 'h-4 w-4 text-muted-foreground/20'
+                          }
+                        />
+                      ))}
+                      <span className="ml-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                        {review.rating}.0 / 5.0
+                      </span>
+                    </div>
+
+                    <p className="mt-6 text-balance font-heading text-lg font-semibold leading-relaxed text-foreground md:text-xl lg:text-2xl">
+                      “{review.quote[locale]}”
+                    </p>
+                  </div>
+
+                  <div className="mt-8 border-t border-dashed border-border/70 pt-5">
+                    <p className="font-heading text-lg font-extrabold leading-tight text-foreground md:text-xl">
+                      {review.name}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground md:text-base">
+                      {review.role[locale]}
+                    </p>
                   </div>
                 </div>
               </motion.div>

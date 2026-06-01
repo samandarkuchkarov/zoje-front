@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Loader2, Send } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const schema = z.object({
   name: z.string().min(2),
@@ -20,7 +21,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export function ContactForm() {
+export function ContactForm({ className }: { className?: string } = {}) {
   const t = useTranslations('contact.form');
   const tCheckout = useTranslations('checkout.form');
   const tCommon = useTranslations('common');
@@ -49,20 +50,20 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-4", className)}>
       <div className="space-y-1.5">
         <Label htmlFor="name">{t('name')}</Label>
-        <Input id="name" {...register('name')} className={errors.name ? 'border-destructive' : ''} />
+        <Input id="name" {...register('name')} className={cn("h-11 bg-white", errors.name && "border-destructive")} />
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="cphone">{t('phone')}</Label>
-        <Input id="cphone" {...register('phone')} placeholder="+998990975511" className={errors.phone ? 'border-destructive' : ''} />
+        <Input id="cphone" {...register('phone')} placeholder="+998 99 097 55 11" className={cn("h-11 bg-white", errors.phone && "border-destructive")} />
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="message">{t('message')}</Label>
-        <Textarea id="message" {...register('message')} rows={4} className={errors.message ? 'border-destructive' : ''} />
+        <Textarea id="message" {...register('message')} rows={5} className={cn("min-h-32 bg-white", errors.message && "border-destructive")} />
       </div>
-      <Button type="submit" disabled={isSubmitting} className="w-full bg-brand hover:bg-brand-deep text-white gap-2">
+      <Button type="submit" disabled={isSubmitting} size="lg" className="w-full bg-brand hover:bg-brand-deep text-white gap-2 font-bold">
         <AnimatePresence mode="wait">
           {isSubmitting ? (
             <motion.span key="l" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2">

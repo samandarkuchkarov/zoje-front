@@ -1,87 +1,49 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { ChevronLeft, ChevronRight, MapPin, Quote, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 
 const ROTATE_MS = 7000;
 
 type Review = {
   name: string;
-  initials: string;
+  image: string;
   role: { uz: string; ru: string };
-  location: { uz: string; ru: string };
+  brand: string;
   quote: { uz: string; ru: string };
   rating: number;
-  years: string;
 };
 
 const REVIEWS: Review[] = [
   {
-    name: 'Sherzod Karimov',
-    initials: 'SK',
+    name: 'Abduvahobov Abdulloh',
+    image: '/Abduvahobov.png',
     role: {
-      uz: "Tikuv ustaxonasi egasi",
-      ru: 'Владелец швейной мастерской',
+      uz: '“Morobolsin” brendi asoschisi',
+      ru: 'Основатель бренда «Morobolsin»',
     },
-    location: { uz: 'Toshkent', ru: 'Ташкент' },
+    brand: 'Morobolsin',
     quote: {
-      uz: "ZOJE mashinalarini 3 yildan beri ishlatamiz. Kafolat shartlari halol, har qanday muammoda servis tez yetib keladi. Boshqa brendlardan farqli — chindan ishonchli.",
-      ru: 'Используем машины ZOJE уже три года. Гарантия честная, сервис оперативный. В отличие от других брендов — действительно надёжно.',
+      uz: "Biz professional oshpazlar uchun forma ishlab chiqaramiz, shuning uchun tikuv sifati biz uchun juda muhim. Zoje mashinalari bilan ishlaganimizdan beri ishimiz ancha tezlashdi va sifat ham ancha yaxshilandi. Eng muhimi — mashinalar ishonchli va og‘ir yuklamada ham muammosiz ishlaydi. Zoje — bu bizning ishlab chiqarishdagi asosiy tayanchimiz.",
+      ru: 'Мы производим форму для профессиональных поваров, поэтому качество шитья для нас очень важно. С тех пор как работаем на машинах Zoje, наша работа стала значительно быстрее, а качество — заметно лучше. Главное — машины надёжные и без сбоев справляются с большой нагрузкой. Zoje — наша главная опора в производстве.',
     },
     rating: 5,
-    years: '3+',
   },
   {
-    name: 'Alisher Yusupov',
-    initials: 'AY',
+    name: 'Muslima Maxkamova',
+    image: '/Muslima.jpg',
     role: {
-      uz: "‘Elegant’ fabrikasi direktori",
-      ru: 'Директор фабрики «Elegant»',
+      uz: 'MMAX akademiyasi asoschisi',
+      ru: 'Основатель академии MMAX',
     },
-    location: { uz: 'Samarqand', ru: 'Самарканд' },
+    brand: 'MMAX',
     quote: {
-      uz: "60 ta ZOJE mashinasi bilan ishlaymiz — kunlik mahsuldorlik 30% ga oshdi. Eski parkdan keyin ZOJE — boshqa darajadagi sifat.",
-      ru: 'Работаем с 60 машинами ZOJE — производительность выросла на 30%. После старого парка ZOJE — это другой уровень качества.',
+      uz: "Biz akademiyada tikuvchilikni no’ldan o‘rgatamiz va o‘quvchilarimizga sifatli uskunada ishlashni muhim deb bilamiz. Zoje mashinalari o‘rganish uchun ham, professional ishlash uchun ham juda qulay. O‘quvchilarimiz tez o‘zlashtiradi va natijalar ham ancha yaxshi chiqadi. Zoje bilan ishlash — bu o‘sish va ishonch degani.",
+      ru: 'В нашей академии мы обучаем шитью с нуля, и нам важно, чтобы ученики работали на качественном оборудовании. Машины Zoje удобны как для обучения, так и для профессиональной работы. Ученики быстро их осваивают, и результаты получаются заметно лучше. Работа с Zoje — это рост и уверенность.',
     },
     rating: 5,
-    years: '4+',
-  },
-  {
-    name: 'Madina Akhmedova',
-    initials: 'MA',
-    role: { uz: 'Brend tikuvchisi', ru: 'Дизайнер бренда' },
-    location: { uz: 'Toshkent', ru: 'Ташкент' },
-    quote: {
-      uz: "Texnik xizmat doim aloqada. Murakkab buyurtmalar uchun maxsus sozlamalarni o'rgatishdi — bunday darajadagi qo'llab-quvvatlash kam uchraydi.",
-      ru: 'Техподдержка всегда на связи. Под сложные заказы научили специальным настройкам — такого уровня поддержки нечасто встретишь.',
-    },
-    rating: 5,
-    years: '2+',
-  },
-  {
-    name: 'Bobur Tursunov',
-    initials: 'BT',
-    role: { uz: 'Sanoat tikuv mas’uli', ru: 'Руководитель производства' },
-    location: { uz: "Farg'ona", ru: 'Фергана' },
-    quote: {
-      uz: "Farg'onaga ikki kunda yetkazib berishdi — original ehtiyot qismlar ham omborda topildi. Ishlab chiqarish bir kun ham to'xtamadi.",
-      ru: 'Доставка в Фергану за два дня — оригинальные запчасти были в наличии. Производство не простаивало ни дня.',
-    },
-    rating: 5,
-    years: '5+',
-  },
-  {
-    name: 'Dilshod Nazarov',
-    initials: 'DN',
-    role: { uz: 'Ustaxona egasi', ru: 'Владелец мастерской' },
-    location: { uz: 'Buxoro', ru: 'Бухара' },
-    quote: {
-      uz: '5 yildan beri ZOJE bilan ishlaymiz. Mashinalar ishonchli, narxlar adolatli — chinakam strategik hamkor.',
-      ru: 'Работаем с ZOJE уже пять лет. Машины надёжные, цены справедливые — настоящий стратегический партнёр.',
-    },
-    rating: 5,
-    years: '5+',
   },
 ];
 
@@ -120,7 +82,7 @@ export function ReviewsSection({ locale }: Props) {
         : "ZOJE bilan ishlayotgan ustaxona egalari, fabrikalar va brendlarning haqiqiy tajribasi.",
     prev: locale === 'ru' ? 'Назад' : 'Oldingi',
     next: locale === 'ru' ? 'Дальше' : 'Keyingi',
-    yearsLabel: locale === 'ru' ? 'лет с ZOJE' : 'yil ZOJE bilan',
+    brandLabel: locale === 'ru' ? 'Бренд' : 'Brend',
     verified: locale === 'ru' ? 'Подтверждённый клиент' : 'Tasdiqlangan mijoz',
   };
 
@@ -243,8 +205,14 @@ export function ReviewsSection({ locale }: Props) {
                   </p>
 
                   <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-deep font-heading text-base font-extrabold text-white shadow-lg shadow-brand/30 ring-2 ring-white/10">
-                      {review.initials}
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full bg-brand-light shadow-lg shadow-brand/15 ring-2 ring-brand/20">
+                      <Image
+                        src={review.image}
+                        alt={review.name}
+                        fill
+                        sizes="64px"
+                        className="object-cover"
+                      />
                     </div>
                     <div className="min-w-0">
                       <p className="font-heading text-base font-extrabold leading-tight text-foreground">
@@ -253,26 +221,22 @@ export function ReviewsSection({ locale }: Props) {
                       <p className="mt-0.5 text-sm text-muted-foreground">
                         {review.role[locale]}
                       </p>
-                      <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand">
-                        <MapPin className="h-3 w-3" />
-                        {review.location[locale]}
-                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-row gap-3 md:flex-col md:items-end md:gap-4">
                   <div className="flex flex-col items-start rounded-2xl border border-brand/15 bg-brand-light px-4 py-3 md:items-end">
-                    <span className="font-heading text-3xl font-extrabold leading-none text-brand md:text-4xl">
-                      {review.years}
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand/70">
+                      {labels.brandLabel}
                     </span>
-                    <span className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                      {labels.yearsLabel}
+                    <span className="mt-1 font-heading text-2xl font-extrabold leading-none text-brand md:text-3xl">
+                      {review.brand}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 self-end rounded-full border border-brand/15 bg-brand-light px-3 py-1.5">
                     <span className="relative flex h-2 w-2">
-                      <span className="hidden" />
+                      <span className="absolute inset-0 animate-ping rounded-full bg-brand/60" />
                       <span className="relative h-2 w-2 rounded-full bg-brand" />
                     </span>
                     <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand">

@@ -21,7 +21,10 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export function ContactForm({ className }: { className?: string } = {}) {
+export function ContactForm({
+  className,
+  phonePlaceholder = '+998 99 097 55 11',
+}: { className?: string; phonePlaceholder?: string } = {}) {
   const t = useTranslations('contact.form');
   const tCheckout = useTranslations('checkout.form');
   const tCommon = useTranslations('common');
@@ -57,7 +60,7 @@ export function ContactForm({ className }: { className?: string } = {}) {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="cphone">{t('phone')}</Label>
-        <Input id="cphone" {...register('phone')} placeholder="+998 99 097 55 11" className={cn("h-11 bg-white", errors.phone && "border-destructive")} />
+        <Input id="cphone" {...register('phone')} placeholder={phonePlaceholder} className={cn("h-11 bg-white", errors.phone && "border-destructive")} />
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="message">{t('message')}</Label>

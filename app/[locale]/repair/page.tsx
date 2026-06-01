@@ -330,7 +330,7 @@ export default async function RepairPage({ params }: Props) {
             <p className="mt-4 max-w-xl text-white/70 text-pretty">{copy.formSubtitle}</p>
           </div>
           <div className="rounded-lg border border-white/10 bg-white p-5 text-foreground shadow-2xl shadow-black/25 md:p-6">
-            <ContactForm />
+            <ContactForm phonePlaceholder="+998 99 720 55 11" />
           </div>
         </div>
       </section>

@@ -110,7 +110,7 @@ export function HeroSection() {
           href: '/contact',
         },
         image: {
-          src: '/hero/zoje-zj-m7-hero.png',
+          src: '/hero/third.png',
           alt: 'ZOJE original spare parts',
         },
         accent: 'deep',
